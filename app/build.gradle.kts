@@ -7,11 +7,12 @@ plugins {
 
 android {
     namespace = "by.vjacheslavkovalenko.aboutasteroidstms"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "by.vjacheslavkovalenko.aboutasteroidstms"
         minSdk = 26
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
