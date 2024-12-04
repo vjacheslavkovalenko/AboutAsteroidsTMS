@@ -30,7 +30,8 @@ class PictureOfDayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.picture.observe(viewLifecycleOwner) {
 //            Glide.with(requireContext()).load(it.url).into(binding?.imagePictureOfDay)
-            binding?.imagePictureOfDay?.loadUrl(it.message)
+//            binding?.imagePictureOfDay?.loadUrl(it.message)
+            binding?.imagePictureOfDay?.loadUrl(it.url)
             binding?.errorText?.visibility = View.GONE
             binding?.tryAgainButton?.visibility = View.GONE
             binding?.imagePictureOfDay?.visibility = View.VISIBLE

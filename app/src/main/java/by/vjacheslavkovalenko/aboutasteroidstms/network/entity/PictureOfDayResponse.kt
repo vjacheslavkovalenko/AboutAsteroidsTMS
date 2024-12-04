@@ -4,6 +4,6 @@ data class PictureOfDayResponse(
 
 //    val title: String,
 
-//    val url: String
-    val message: String
+    val url: String
+//    val message: String
 )

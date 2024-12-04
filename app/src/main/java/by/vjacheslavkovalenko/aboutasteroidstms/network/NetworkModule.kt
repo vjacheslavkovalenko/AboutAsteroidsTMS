@@ -19,8 +19,8 @@ object NetworkModule {
     @Singleton
     fun provideApi(): Api {
         val retrofit: Retrofit = Retrofit.Builder()
-//            .baseUrl(Constants.BASEURL)
-            .baseUrl("https://dog.ceo/api/")
+            .baseUrl(Constants.BASEURL)
+//            .baseUrl("https://dog.ceo/api/")
             .client(
                 OkHttpClient.Builder()
                     .addInterceptor(
