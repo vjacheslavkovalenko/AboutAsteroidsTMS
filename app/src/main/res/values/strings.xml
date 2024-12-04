@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AboutAsteroidsTMS</string>
+    <string name="picture_of_day">Picture of day</string>
 </resources>
