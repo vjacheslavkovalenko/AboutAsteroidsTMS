@@ -1,0 +1,3 @@
+package by.vjacheslavkovalenko.aboutasteroidstms.ui.asteroidsbydate.dateasteroidsadapter
+
+class DateAsteroidsAdapter()

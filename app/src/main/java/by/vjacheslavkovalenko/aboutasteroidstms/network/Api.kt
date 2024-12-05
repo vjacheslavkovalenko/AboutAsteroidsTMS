@@ -11,13 +11,13 @@ import retrofit2.http.Query
 
 interface Api {
 
-    @GET("planetary/apod?api_key=gM0Ze05VWVs9uAcahDClWEvapDNv7m5MNiuO3TLl")
-//    @GET("planetary/apod")
+    //    @GET("planetary/apod?api_key=gM0Ze05VWVs9uAcahDClWEvapDNv7m5MNiuO3TLl")
+    @GET("planetary/apod")
 //    @GET("breeds/image/random")
-    suspend fun fetchPictureOfDay(): Response<PictureOfDayResponse>
-//    suspend fun fetchPictureOfDay(
-//        @Query("api_key") apiKey: String = Constants.APIKEY
-//    ): Response<PictureOfDayResponse>
+//    suspend fun fetchPictureOfDay(): Response<PictureOfDayResponse>
+    suspend fun fetchPictureOfDay(
+        @Query("api_key") apiKey: String = Constants.APIKEY
+    ): Response<PictureOfDayResponse>
 
     //получаю группу астероидов на конкретную дату (-ы)
     @GET("neo/rest/v1/feed")
