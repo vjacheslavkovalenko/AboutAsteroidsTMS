@@ -1,6 +1,7 @@
 package by.vjacheslavkovalenko.aboutasteroidstms.repository
 
 import by.vjacheslavkovalenko.aboutasteroidstms.network.Api
+import by.vjacheslavkovalenko.aboutasteroidstms.utils.Constants.APIKEY
 import javax.inject.Inject
 
 //class DogRepository @Inject constructor(
@@ -19,6 +20,11 @@ class AllAsteroidsRepository @Inject constructor(
 ) {
 
     suspend fun getPictureOfDay() = api.fetchPictureOfDay()
+
+    suspend fun getListAsteroidsByDate() = api.fetchAsteroidsByDate(startDate = 1, endDate = ,APIKEY)
+
+    suspend fun getListAsteroid() = api.fetchAsteroid()
+
 
 //    suspend fun getAsteroids(startDate: String, endDate: String): List<Asteroid> {
 //        val response = apiService.getAsteroids(startDate, endDate)
