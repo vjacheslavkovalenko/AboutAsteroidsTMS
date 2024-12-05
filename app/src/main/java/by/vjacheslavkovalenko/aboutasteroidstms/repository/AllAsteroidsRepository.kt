@@ -21,9 +21,10 @@ class AllAsteroidsRepository @Inject constructor(
 
     suspend fun getPictureOfDay() = api.fetchPictureOfDay()
 
-    suspend fun getListAsteroidsByDate() = api.fetchAsteroidsByDate(startDate = 1, endDate = ,APIKEY)
+    suspend fun getListAsteroidsByDate(startDate: String, endDate: String) =
+        api.fetchAsteroidsByDate(startDate, endDate, APIKEY)
 
-    suspend fun getListAsteroid() = api.fetchAsteroid()
+  //!!!  suspend fun getListAsteroid() = api.fetchAsteroid()
 
 
 //    suspend fun getAsteroids(startDate: String, endDate: String): List<Asteroid> {
