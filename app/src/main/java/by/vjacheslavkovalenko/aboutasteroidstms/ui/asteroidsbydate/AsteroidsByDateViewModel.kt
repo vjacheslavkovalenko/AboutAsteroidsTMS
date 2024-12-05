@@ -13,6 +13,7 @@ import javax.inject.Inject
 import androidx.lifecycle.LiveData
 import by.vjacheslavkovalenko.aboutasteroidstms.network.entity.NearEarthObjectsResponse
 import retrofit2.Response
+import by.vjacheslavkovalenko.aboutasteroidstms.utils.DateUtils
 
 //ИИ написал:
 //@HiltViewModel
@@ -26,10 +27,13 @@ import retrofit2.Response
 //    fun loadListAsteroidsByDate() {
 //        viewModelScope.launch(Dispatchers.IO) {
 //            try {
-//                // Получаем ответ от репозитория
-//                val response: Response<NearEarthObjectsResponse> = allAsteroidsRepository.getListAsteroidsByDate()
+//                // Получаем стартовую и конечную даты из утилиты
+//                val (startDate, endDate) = DateUtils.getStartAndEndDate()
+//
+//                // Получаем ответ от репозитория с использованием стартовой и конечной дат
+//                val response: Response<NearEarthObjectsResponse> = allAsteroidsRepository.getListAsteroidsByDate(startDate, endDate)
+//
 //                if (response.isSuccessful) {
-//                    // Проверяем, что тело ответа не null и извлекаем данные
 //                    response.body()?.let { nearEarthObjectsResponse ->
 //                        // Извлекаем ключи (даты) из HashMap и создаем список строк
 //                        val datesList = nearEarthObjectsResponse.nearEarthObjects.keys.toList()
@@ -45,6 +49,7 @@ import retrofit2.Response
 //        }
 //    }
 //}
+//
 @HiltViewModel
 class AsteroidsByDateViewModel @Inject constructor(
     private val allAsteroidsRepository: AllAsteroidsRepository
@@ -56,9 +61,14 @@ class AsteroidsByDateViewModel @Inject constructor(
 
     fun loadListAsteroidsByDate() {
         viewModelScope.launch(Dispatchers.IO) {
+            // Получаю стартовую и конечную даты из утилиты
+            val (startDate, endDate) = DateUtils.getStartAndEndDate()
+
+            // Получаю ответ от репозитория с использованием стартовой и конечной дат
 //            val response = allAsteroidsRepository.getListAsteroidsByDate()
             val response: Response<NearEarthObjectsResponse> =
-                allAsteroidsRepository.getListAsteroidsByDate()
+//                allAsteroidsRepository.getListAsteroidsByDate()
+                allAsteroidsRepository.getListAsteroidsByDate(startDate, endDate)
             if (response.isSuccessful) {
                 response.body()?.let { nearEarthObjectsResponse ->
                     // Извлекаю ключи (даты) из HashMap и создаю список строк
