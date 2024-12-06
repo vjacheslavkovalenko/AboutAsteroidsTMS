@@ -7,52 +7,72 @@ import javax.inject.Inject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import by.vjacheslavkovalenko.aboutasteroidstms.model.AsteroidsByDate
+import by.vjacheslavkovalenko.aboutasteroidstms.network.entity.NearEarthObjectsResponse
+import by.vjacheslavkovalenko.aboutasteroidstms.utils.DateUtils
 import by.vjacheslavkovalenko.aboutasteroidstms.utils.toListAsteroidsByDate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import by.vjacheslavkovalenko.aboutasteroidstms.utils.toListAsteroidsByDate
+import retrofit2.Response
 
-//
+//***
+//@HiltViewModel
 //class GroupOfAsteroidsViewModel @Inject constructor(
-//    private val repository: AllAsteroidsRepository
+//    private val allAsteroidsRepository: AllAsteroidsRepository
 //) : ViewModel() {
 //
-//    private val groupsOfAsteroidsMutable = MutableLiveData<List<String>>()
-//    val groupsOfAsteroids: LiveData<List<String>> get() = groupsOfAsteroidsMutable
+//    val listAsteroidsByDate = MutableLiveData<List<AsteroidsByDate>>()
 //
-//    init {
-//        loadGroupsOfAsteroids()
-//    }
-//
-//    private fun loadGroupsOfAsteroids() {
-//        viewModelScope.launch {
+//    fun loadListAsteroidsByDate() {
+//        viewModelScope.launch(Dispatchers.IO) {
 //            try {
-//                // Здесь вы можете указать нужные параметры для получения групп астероидов.
-//                // Например, можно получить данные по определенной дате или другим критериям.
+//                // Получаем список астероидов из репозитория
+//                val response: Response<List<AsteroidsByDate>> = allAsteroidsRepository.getListAsteroidsByDate()
 //
-//                // Загружаем данные из репозитория (предположим, что метод возвращает список строк)
-//                val groups = repository.getListAsteroid() // Замените на нужный метод репозитория
-//                groupsOfAsteroidsMutable.value = groups // Обновляем LiveData
+//                // Проверяем успешность ответа и обрабатываем данные
+//                if (response.isSuccessful) {
+//                    response.body()?.toListAsteroidsByDate()?.let { asteroidsList ->
+//                        listAsteroidsByDate.postValue(asteroidsList)
+//                    } ?: run {
+//                        // Обработка случая, когда тело ответа null
+//                        listAsteroidsByDate.postValue(emptyList())
+//                    }
+//                } else {
+//                    // Обработка ошибки (например, логирование)
+//                    // Можно использовать LiveData для передачи ошибки в UI, если это необходимо
+//                    listAsteroidsByDate.postValue(emptyList()) // Или другое поведение при ошибке
+//                }
 //            } catch (e: Exception) {
-//                // Обработка ошибок (например, логирование или уведомление пользователя)
-//                e.printStackTrace()
+//                // Обработка исключений (например, сетевые ошибки)
+//                e.printStackTrace() // Логирование ошибки
+//                listAsteroidsByDate.postValue(emptyList()) // Или другое поведение при ошибке
 //            }
 //        }
 //    }
 //}
+
 @HiltViewModel
 class GroupOfAsteroidsViewModel @Inject constructor(
-    private val allAsteroidsRepository : AllAsteroidsRepository
+    private val allAsteroidsRepository: AllAsteroidsRepository
 ) : ViewModel() {
 
-    val listAsteroidsByDate= MutableLiveData<List<AsteroidsByDate>>()
+    val listAsteroidsByDate = MutableLiveData<List<AsteroidsByDate>>()
 
-        fun loadListAsteroidsByDate() {
+    fun loadListAsteroidsByDate() {
         viewModelScope.launch(Dispatchers.IO) {
-            val response = allAsteroidsRepository.getListAsteroidsByDate()
+
+            // Получаю стартовую и конечную даты из утилиты
+            val (startDate, endDate) = DateUtils.getStartAndEndDate()
+// Получаю ответ от репозитория с использованием стартовой и конечной дат
+            val response: Response<NearEarthObjectsResponse> =
+                allAsteroidsRepository.getListAsteroidsByDate(startDate, endDate)
+
             if (response.isSuccessful) {
+
                 response.body()?.toListAsteroidsByDate()?.let {
                     listAsteroidsByDate.postValue(it)
                 }
+
             }
         }
     }
