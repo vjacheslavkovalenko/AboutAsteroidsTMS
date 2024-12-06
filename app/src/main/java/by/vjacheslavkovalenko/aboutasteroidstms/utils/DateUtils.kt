@@ -15,6 +15,8 @@ object DateUtils {
 
         // Форматируем даты в строку в формате "yyyy-MM-dd"
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
+        // Возвращаем отформатированные даты
         return Pair(startDate.format(formatter), endDate.format(formatter))
     }
 }

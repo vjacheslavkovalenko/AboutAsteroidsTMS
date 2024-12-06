@@ -4,17 +4,6 @@ import by.vjacheslavkovalenko.aboutasteroidstms.network.Api
 import by.vjacheslavkovalenko.aboutasteroidstms.utils.Constants.APIKEY
 import javax.inject.Inject
 
-//class DogRepository @Inject constructor(
-//    private val api: Api
-//) {
-//
-//    suspend fun getRandomDogImage() = api.fetchRandomDogImage()
-//
-//    suspend fun getListBreads() = api.fetchListDogBreeds()
-//
-//    suspend fun getRandomBreedImage(breed: String) = api.fetchRandomBreedImage(breed)
-//}
-
 class AllAsteroidsRepository @Inject constructor(
     private val api: Api
 ) {
@@ -26,9 +15,4 @@ class AllAsteroidsRepository @Inject constructor(
 
     suspend fun getListAsteroid(id: String) = api.fetchAsteroid(id)
 
-
-//    suspend fun getAsteroids(startDate: String, endDate: String): List<Asteroid> {
-//        val response = apiService.getAsteroids(startDate, endDate)
-//        return parseAsteroidsResponse(response)
-//    }
 }

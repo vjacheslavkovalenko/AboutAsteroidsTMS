@@ -1,14 +1,17 @@
 package by.vjacheslavkovalenko.aboutasteroidstms.ui.asteroidsbydate.dateasteroidsadapter
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.ItemDateAsteroidsBinding
 
 class DateAsteroidsViewHolder(
     private val binding: ItemDateAsteroidsBinding
-) : ViewHolder(binding.root) {
+//) : ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(dateAsteroids: String) {
+        // Устанавливаем текст даты в TextView
         binding.dateOfGroupAsteroids.text = dateAsteroids
     }
 
@@ -24,7 +27,6 @@ class DateAsteroidsViewHolder(
 //    }
 //}
 }
-
 
 
 //import androidx.recyclerview.widget.RecyclerView.ViewHolder

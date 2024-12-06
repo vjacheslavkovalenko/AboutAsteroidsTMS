@@ -1,5 +1,6 @@
 package by.vjacheslavkovalenko.aboutasteroidstms.ui.asteroidsbydate
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,40 +17,7 @@ import retrofit2.Response
 import by.vjacheslavkovalenko.aboutasteroidstms.utils.DateUtils
 
 //ИИ написал:
-//@HiltViewModel
-//class AsteroidsByDateViewModel @Inject constructor(
-//    private val allAsteroidsRepository: AllAsteroidsRepository
-//) : ViewModel() {
-//
-//    private val listAsteroidsByDateMutable = MutableLiveData<List<String>>() // Список строк для отображения дат
-//    val listAsteroidsByDate: LiveData<List<String>> get() = listAsteroidsByDateMutable
-//
-//    fun loadListAsteroidsByDate() {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            try {
-//                // Получаем стартовую и конечную даты из утилиты
-//                val (startDate, endDate) = DateUtils.getStartAndEndDate()
-//
-//                // Получаем ответ от репозитория с использованием стартовой и конечной дат
-//                val response: Response<NearEarthObjectsResponse> = allAsteroidsRepository.getListAsteroidsByDate(startDate, endDate)
-//
-//                if (response.isSuccessful) {
-//                    response.body()?.let { nearEarthObjectsResponse ->
-//                        // Извлекаем ключи (даты) из HashMap и создаем список строк
-//                        val datesList = nearEarthObjectsResponse.nearEarthObjects.keys.toList()
-//                        listAsteroidsByDateMutable.postValue(datesList) // Обновляем LiveData
-//                    }
-//                } else {
-//                    // Обработка ошибки (например, логирование)
-//                }
-//            } catch (e: Exception) {
-//                // Обработка исключений (например, логирование)
-//                e.printStackTrace()
-//            }
-//        }
-//    }
-//}
-//
+
 @HiltViewModel
 class AsteroidsByDateViewModel @Inject constructor(
     private val allAsteroidsRepository: AllAsteroidsRepository
@@ -67,17 +35,33 @@ class AsteroidsByDateViewModel @Inject constructor(
             // Получаю ответ от репозитория с использованием стартовой и конечной дат
 //            val response = allAsteroidsRepository.getListAsteroidsByDate()
             val response: Response<NearEarthObjectsResponse> =
-//                allAsteroidsRepository.getListAsteroidsByDate()
                 allAsteroidsRepository.getListAsteroidsByDate(startDate, endDate)
-            if (response.isSuccessful) {
-                response.body()?.let { nearEarthObjectsResponse ->
-                    // Извлекаю ключи (даты) из HashMap и создаю список строк
-                    val datesList = nearEarthObjectsResponse.nearEarthObjects.keys.toList()
-                    listAsteroidsByDateMutable.postValue(datesList)
-                }
-            }
+
+if (response.isSuccessful) {
+    response.body()?.let { nearEarthObjectsResponse ->
+        Log.d("AsteroidsByDateViewModel", "Received response: $nearEarthObjectsResponse")
+
+        // Проверяем на null перед доступом к ключам
+        val nearEarthObjects = nearEarthObjectsResponse.nearEarthObjects
+        if (nearEarthObjects != null && nearEarthObjects.isNotEmpty()) {
+            val datesList = nearEarthObjects.keys.toList()
+            Log.d("AsteroidsByDateViewModel", "Dates list: $datesList")
+            listAsteroidsByDateMutable.postValue(datesList)
+        } else {
+            Log.e("AsteroidsByDateViewModel", "No near Earth objects found or nearEarthObjects is null.")
+            listAsteroidsByDateMutable.postValue(emptyList())
+        }
+    } ?: run {
+        Log.e("AsteroidsByDateViewModel", "Response body is null")
+        listAsteroidsByDateMutable.postValue(emptyList())
+    }
+} else {
+    Log.e("AsteroidsByDateViewModel", "Error fetching data: ${response.message()}")
+}
         }
     }
+
+
 }
 
 
