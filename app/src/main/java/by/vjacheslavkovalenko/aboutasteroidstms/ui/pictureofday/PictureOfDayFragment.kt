@@ -7,9 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentPictureOfDayBinding
+import by.vjacheslavkovalenko.aboutasteroidstms.ui.MainActivity
 import by.vjacheslavkovalenko.aboutasteroidstms.utils.loadUrl
 import dagger.hilt.android.AndroidEntryPoint
 
+//
+
+//
+
+//
+
+//}
 @AndroidEntryPoint
 class PictureOfDayFragment : Fragment() {
 
@@ -26,6 +34,19 @@ class PictureOfDayFragment : Fragment() {
         return binding?.root
     }
 
+
+
+//
+//        binding?.tryAgainButton?.setOnClickListener {
+//            viewModel.loadPictureOfDay()
+//        }
+//        // Пример кнопки для перехода к AsteroidsByDateFragment
+//        binding?.buttonShowAsteroidsByDate?.setOnClickListener {
+//            (activity as? MainActivity)?.showAsteroidsByDateFragment()
+//        }
+//
+//        viewModel.loadPictureOfDay()
+//    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.picture.observe(viewLifecycleOwner) {
@@ -44,6 +65,11 @@ class PictureOfDayFragment : Fragment() {
         binding?.tryAgainButton?.setOnClickListener {
             viewModel.loadPictureOfDay()
         }
+            // Пример кнопки для перехода к AsteroidsByDateFragment
+        binding?.buttonShowAsteroidsByDate?.setOnClickListener {//удалить
+            (activity as? MainActivity)?.showAsteroidsByDateFragment()//удалить
+        }//удалить
+
         viewModel.loadPictureOfDay()
     }
 }
