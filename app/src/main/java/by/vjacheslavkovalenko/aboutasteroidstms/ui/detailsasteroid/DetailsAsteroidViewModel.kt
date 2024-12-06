@@ -7,33 +7,45 @@ import androidx.lifecycle.viewModelScope
 import by.vjacheslavkovalenko.aboutasteroidstms.model.Asteroid
 import by.vjacheslavkovalenko.aboutasteroidstms.model.PictureOfDay
 import by.vjacheslavkovalenko.aboutasteroidstms.repository.AllAsteroidsRepository
+import by.vjacheslavkovalenko.aboutasteroidstms.utils.toAsteroid
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//***
-//
+//***с обработкой ошибок:
 //@HiltViewModel
 //class DetailsAsteroidViewModel @Inject constructor(
 //    private val allAsteroidsRepository: AllAsteroidsRepository
 //) : ViewModel() {
 //
-//    private val asteroidLiveData = MutableLiveData<Asteroid>()
-//    val asteroid: LiveData<Asteroid> get() = asteroidLiveData
+//    private val _asteroid = MutableLiveData<Asteroid>()
+//    val asteroid: LiveData<Asteroid> get() = _asteroid
 //
-//    fun loadAsteroidById(id: Long) {
+//    private val _error = MutableLiveData<String>()
+//    val error: LiveData<String> get() = _error
+//
+//    fun loadAsteroidById(id: String) {
 //        viewModelScope.launch(Dispatchers.IO) {
-//            // Получаем астероид по ID из репозитория
-//            val response = allAsteroidsRepository.getAsteroidById(id)
-//            if (response.isSuccessful) {
-//                response.body()?.let {
-//                    asteroidLiveData.postValue(it)
+//            try {
+//                // Получаем астероид по ID из репозитория
+//                val response = allAsteroidsRepository.getListAsteroid(id)
+//                if (response.isSuccessful) {
+//                    response.body()?.toAsteroid()?.let {
+//                        _asteroid.postValue(it)
+//                    } ?: run {
+//                        _error.postValue("Ошибка: Астероид не найден")
+//                    }
+//                } else {
+//                    _error.postValue("Ошибка: ${response.message()}")
 //                }
+//            } catch (e: Exception) {
+//                _error.postValue("Ошибка: ${e.message}")
 //            }
 //        }
 //    }
 //}
+
 @HiltViewModel
 class DetailsAsteroidViewModel @Inject constructor(
     private val allAsteroidsRepository: AllAsteroidsRepository
@@ -43,13 +55,13 @@ class DetailsAsteroidViewModel @Inject constructor(
 //    val picture = MutableLiveData<PictureOfDay>()
     val asteroid = MutableLiveData<Asteroid>()
 
-    fun loadAsteroidById(id: Long) {
+    fun loadAsteroidById(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
             // Получаем астероид по ID из репозитория
-            val response = allAsteroidsRepository.getAsteroidById(id)
+            val response = allAsteroidsRepository.getListAsteroid(id)
             if (response.isSuccessful) {
-                response.body()?.let {
-                    asteroidLiveData.postValue(it)
+                response.body()?.toAsteroid()?.let {
+                    asteroid.postValue(it)
                 }
             }
         }
