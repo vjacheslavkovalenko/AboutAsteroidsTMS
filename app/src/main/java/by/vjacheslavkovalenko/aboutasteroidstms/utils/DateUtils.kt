@@ -10,8 +10,8 @@ object DateUtils {
         // Получаем сегодняшнюю дату
         val startDate = LocalDate.now()
 
-        // Прибавляем 7 дней к сегодняшней дате для конечной даты
-        val endDate = startDate.plusDays(7)
+        // Прибавляем 6 дней к сегодняшней дате для конечной даты
+        val endDate = startDate.plusDays(6)
 
         // Форматируем даты в строку в формате "yyyy-MM-dd"
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")

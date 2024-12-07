@@ -37,31 +37,35 @@ class AsteroidsByDateViewModel @Inject constructor(
             val response: Response<NearEarthObjectsResponse> =
                 allAsteroidsRepository.getListAsteroidsByDate(startDate, endDate)
 
-if (response.isSuccessful) {
-    response.body()?.let { nearEarthObjectsResponse ->
-        Log.d("AsteroidsByDateViewModel", "Received response: $nearEarthObjectsResponse")
+            if (response.isSuccessful) {
+                response.body()?.let { nearEarthObjectsResponse ->
+                    Log.d(
+                        "AsteroidsByDateViewModel",
+                        "Received response: $nearEarthObjectsResponse"
+                    )
 
-        // Проверяем на null перед доступом к ключам
-        val nearEarthObjects = nearEarthObjectsResponse.nearEarthObjects
-        if (nearEarthObjects != null && nearEarthObjects.isNotEmpty()) {
-            val datesList = nearEarthObjects.keys.toList()
-            Log.d("AsteroidsByDateViewModel", "Dates list: $datesList")
-            listAsteroidsByDateMutable.postValue(datesList)
-        } else {
-            Log.e("AsteroidsByDateViewModel", "No near Earth objects found or nearEarthObjects is null.")
-            listAsteroidsByDateMutable.postValue(emptyList())
+                    // Проверяем на null перед доступом к ключам
+                    val nearEarthObjects = nearEarthObjectsResponse.nearEarthObjects
+                    if (nearEarthObjects != null && nearEarthObjects.isNotEmpty()) {
+                        val datesList = nearEarthObjects.keys.toList() // Извлекаем все даты
+                        Log.d("AsteroidsByDateViewModel", "Dates list: $datesList")
+                        listAsteroidsByDateMutable.postValue(datesList) // Обновляем LiveData со всеми датами
+                    } else {
+                        Log.e(
+                            "AsteroidsByDateViewModel",
+                            "No near Earth objects found or nearEarthObjects is null."
+                        )
+                        listAsteroidsByDateMutable.postValue(emptyList())
+                    }
+                } ?: run {
+                    Log.e("AsteroidsByDateViewModel", "Response body is null")
+                    listAsteroidsByDateMutable.postValue(emptyList())
+                }
+            } else {
+                Log.e("AsteroidsByDateViewModel", "Error fetching data: ${response.message()}")
+            }
         }
-    } ?: run {
-        Log.e("AsteroidsByDateViewModel", "Response body is null")
-        listAsteroidsByDateMutable.postValue(emptyList())
     }
-} else {
-    Log.e("AsteroidsByDateViewModel", "Error fetching data: ${response.message()}")
-}
-        }
-    }
-
-
 }
 
 

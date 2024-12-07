@@ -1,6 +1,7 @@
 package by.vjacheslavkovalenko.aboutasteroidstms.ui.groupasteroid
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,6 +69,42 @@ import dagger.hilt.android.AndroidEntryPoint
 //        binding = null // Освобождаем ресурсы
 //    }
 //}
+
+//*******************
+//class GroupOfAsteroidsFragment : Fragment() {
+//
+//    private var binding: FragmentGroupOfAsteroidsBinding? = null
+//
+//    private val viewModel: GroupOfAsteroidsViewModel by viewModels()
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        binding = FragmentGroupOfAsteroidsBinding.inflate(inflater)
+//        return binding?.root
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        // Получаем дату из аргументов
+//        val selectedDate = arguments?.getString("SELECTED_DATE")
+//        Log.d("GroupOfAsteroidsFragment", "Selected date: $selectedDate") // Логируем полученную дату
+//
+//        // Наблюдаем за изменениями в списке астероидов
+//        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) { list ->
+//            setList(list)
+//        }
+//
+//        viewModel.loadListAsteroidsByDate(selectedDate) // Загружаем данные для выбранной даты (если это необходимо)
+//    }
+//
+//    private fun setList(list: List<AsteroidsByDate>) {
+//        // Здесь ваша логика для отображения списка астероидов
+//    }
+//}
 @AndroidEntryPoint
 class GroupOfAsteroidsFragment : Fragment() {
 
@@ -85,15 +122,72 @@ class GroupOfAsteroidsFragment : Fragment() {
         return binding?.root
     }
 
+    //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        // Получаем дату из аргументов
+//        val selectedDate = arguments?.getString("SELECTED_DATE")
+//        Log.d("GroupOfAsteroidsFragment", "Selected date: $selectedDate") // Логируем полученную дату
+//
+//        // Наблюдаем за изменениями в списке астероидов
+//        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) { list ->
+//            setList(list)
+//        }
+//
+//        viewModel.loadListAsteroidsByDate(selectedDate) // Загружаем данные для выбранной даты (если это необходимо)
+//    }
+//
+//    private fun setList(list: List<AsteroidsByDate>) {
+//        // Здесь ваша логика для отображения списка астероидов
+//    }
+//}
+
+
+
+    //override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    //    super.onViewCreated(view, savedInstanceState)
+    //
+    //    // Получаем дату из аргументов
+    //    val selectedDate = arguments?.getString("SELECTED_DATE")
+    //    Log.d("GroupOfAsteroidsFragment", "Selected date: $selectedDate") // Логируем полученную дату
+    //
+    //    // Наблюдаем за изменениями в списке астероидов
+    //    viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) { list ->
+    //        setList(list)
+    //    }
+    //
+    //    // Загружаем данные о астероидах для выбранной даты
+    //    selectedDate?.let { viewModel.loadListAsteroidsByDate(it) }
+    //}
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Наблюдаем за изменениями в списке астероидов
-        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) {
-            setList(it)
-        }
 
-        viewModel.loadListAsteroidsByDate()
-    }
+        // Получаем дату из аргументов
+        val selectedDate = arguments?.getString("SELECTED_DATE")
+        Log.d(
+            "GroupOfAsteroidsFragment",
+            "Selected date: $selectedDate"
+        ) // Логируем полученную дату
+
+
+            // Наблюдаем за изменениями в списке астероидов
+            viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) { list ->
+                setList(list)
+            }
+
+            // Загружаем данные о астероидах для выбранной даты
+            selectedDate?.let { viewModel.loadListAsteroidsByDate(it) }
+        }
+        // Наблюдаем за изменениями в списке астероидов
+//        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) {
+            //            Log.d("GroupOfAsteroidsFragment", "Observing dates: $dates")
+//            setList(it)
+//        }
+
+//        viewModel.loadListAsteroidsByDate()
+//                viewModel.loadListAsteroidsByDate(selectedDate) // Загружаем данные для выбранной даты (если это необходимо)
+//    }
 
     private fun setList(list: List<AsteroidsByDate>) {
 

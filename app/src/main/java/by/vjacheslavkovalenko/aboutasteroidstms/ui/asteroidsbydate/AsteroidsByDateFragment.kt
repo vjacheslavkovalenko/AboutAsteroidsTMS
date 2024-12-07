@@ -1,6 +1,7 @@
 package by.vjacheslavkovalenko.aboutasteroidstms.ui.asteroidsbydate
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,65 +73,11 @@ import by.vjacheslavkovalenko.aboutasteroidstms.ui.groupasteroid.GroupOfAsteroid
 //    }
 //}
 
-
-@AndroidEntryPoint
-class AsteroidsByDateFragment : Fragment() {
-
-    private var binding: FragmentAsteroidsByDateBinding? = null
-    private val viewModel: AsteroidsByDateViewModel by viewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentAsteroidsByDateBinding.inflate(inflater)
-        return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // Инициализация адаптера и RecyclerView
-        val adapter = DateAsteroidsAdapter { selectedDate ->
-            // Здесь можно добавить логику обработки нажатия на дату
-            val groupOfAsteroidsFragment = GroupOfAsteroidsFragment().apply {
-                arguments = Bundle().apply {
-                    putString("SELECTED_DATE", selectedDate) // Передаем выбранную дату во фрагмент
-                }
-            }
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, groupOfAsteroidsFragment)
-                .addToBackStack(null)
-                .commit()
-        }
-
-        binding?.recyclerViewDate?.layoutManager = LinearLayoutManager(requireContext())
-        binding?.recyclerViewDate?.adapter = adapter // Установка адаптера
-
-        // Наблюдаем за изменениями в списке астероидов по датам
-        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) { dates ->
-            setList(dates)
-        }
-
-        // Загружаем данные о астероидах по датам
-        viewModel.loadListAsteroidsByDate()
-    }
-
-    private fun setList(list: List<String>) {
-        binding?.recyclerViewDate?.adapter?.let { adapter ->
-            (adapter as? DateAsteroidsAdapter)?.submitList(list) // Обновление данных в адаптере
-        }
-    }
-
-}
-
-//у меня было:
+//333333
 //@AndroidEntryPoint
 //class AsteroidsByDateFragment : Fragment() {
 //
 //    private var binding: FragmentAsteroidsByDateBinding? = null
-//
 //    private val viewModel: AsteroidsByDateViewModel by viewModels()
 //
 //    override fun onCreateView(
@@ -145,42 +92,101 @@ class AsteroidsByDateFragment : Fragment() {
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)
 //
-//        // Наблюдаем за изменениями в списке астероидов по датам
-//        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) {
-//            setList(it)
+//        // Инициализация адаптера и RecyclerView
+//        val adapter = DateAsteroidsAdapter { selectedDate ->
+//            // Здесь можно добавить логику обработки нажатия на дату
+//            val groupOfAsteroidsFragment = GroupOfAsteroidsFragment().apply {
+//                arguments = Bundle().apply {
+//                    putString("SELECTED_DATE", selectedDate) // Передаем выбранную дату во фрагмент
+//                }
+//            }
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.container, groupOfAsteroidsFragment)
+//                .addToBackStack(null)
+//                .commit()
 //        }
-//// Загружаем данные о астероидах по датам
+//
+//        binding?.recyclerViewDate?.layoutManager = LinearLayoutManager(requireContext())
+//        binding?.recyclerViewDate?.adapter = adapter // Установка адаптера
+//
+//        // Наблюдаем за изменениями в списке астероидов по датам
+//        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) { dates ->
+//            setList(dates)
+//        }
+//
+//        // Загружаем данные о астероидах по датам
 //        viewModel.loadListAsteroidsByDate()
 //    }
 //
 //    private fun setList(list: List<String>) {
-//        binding?.recyclerViewDate?.run {
-//            if (adapter == null) {
-//                adapter = DateAsteroidsAdapter { selectedDate ->
-//                    // Переход к GroupOfAsteroidsFragment при нажатии на дату
-//                    val groupOfAsteroidsFragment = GroupOfAsteroidsFragment().apply {
-//                        arguments = Bundle().apply {
-//                            putString(
-//                                "SELECTED_DATE",
-//                                selectedDate
-//                            ) // Передаем выбранную дату во фрагмент
-//                        }
-//                    }
-//
-//                    requireActivity().supportFragmentManager.beginTransaction()
-//                        .replace(R.id.container, groupOfAsteroidsFragment)
-//                        .addToBackStack(null)
-//                        .commit()
-//                } // Инициализация адаптера с обработчиком нажатия на дату
-//
-//                // Инициализация адаптера
-//                layoutManager = LinearLayoutManager(requireContext()) // Установка LayoutManager
-//            }
-//            (adapter as? DateAsteroidsAdapter)?.submitList(list)// Обновление данных в адаптере
+//        binding?.recyclerViewDate?.adapter?.let { adapter ->
+//            (adapter as? DateAsteroidsAdapter)?.submitList(list) // Обновление данных в адаптере
 //        }
 //    }
+//
 //}
 
+//у меня было:
+@AndroidEntryPoint
+class AsteroidsByDateFragment : Fragment() {
+
+    private var binding: FragmentAsteroidsByDateBinding? = null
+
+    private val viewModel: AsteroidsByDateViewModel by viewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentAsteroidsByDateBinding.inflate(inflater)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) { dates ->
+            Log.d("AsteroidsByDateFragment", "Observing dates: $dates")
+            setList(dates) //  Передаем список дат в адаптер. Убедитесь, что setList() обрабатывает все даты
+        }
+
+// Загружаем данные о астероидах по датам
+        viewModel.loadListAsteroidsByDate()
+    }
+
+    private fun setList(list: List<String>) {
+        Log.d("AsteroidsByDateFragment", "Setting list: $list") // Логируем список дат
+        binding?.recyclerViewDate?.run {
+            if (adapter == null) {
+                adapter = DateAsteroidsAdapter { selectedDate ->
+                    // Переход к GroupOfAsteroidsFragment при нажатии на дату
+                    val groupOfAsteroidsFragment = GroupOfAsteroidsFragment().apply {
+                        arguments = Bundle().apply {
+                            putString(
+                                "SELECTED_DATE",
+                                selectedDate
+                            ) // Передаем выбранную дату во фрагмент
+                        }
+                    }
+
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, groupOfAsteroidsFragment)
+                        .addToBackStack(null)
+                        .commit()
+                } // Инициализация адаптера с обработчиком нажатия на дату
+
+                // Инициализация адаптера
+                layoutManager = LinearLayoutManager(requireContext()) // Установка LayoutManager
+            }
+            (adapter as? DateAsteroidsAdapter)?.submitList(list)// Обновление данных в адаптере
+            Log.d(
+                "AsteroidsByDateFragment",
+                "Submitting list to adapter: $list"
+            )// Логируем отправленный список
+        }
+    }
+}
 
 
 //@AndroidEntryPoint

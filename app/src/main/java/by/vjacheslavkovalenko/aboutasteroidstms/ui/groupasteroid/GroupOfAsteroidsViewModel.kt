@@ -58,14 +58,27 @@ class GroupOfAsteroidsViewModel @Inject constructor(
 
     val listAsteroidsByDate = MutableLiveData<List<AsteroidsByDate>>()
 
-    fun loadListAsteroidsByDate() {
+//fun loadListAsteroidsByDate(selectedDate: String) {
+//    viewModelScope.launch(Dispatchers.IO) {
+//        // Используйте выбранную дату для загрузки данных
+//        val response: Response<NearEarthObjectsResponse> =
+//            allAsteroidsRepository.getListAsteroidsByDate(selectedDate, selectedDate)
+//
+//        if (response.isSuccessful) {
+//            response.body()?.toListAsteroidsByDate()?.let {
+//                listAsteroidsByDate.postValue(it)
+//            }
+//        }
+//    }
+//}
+    fun loadListAsteroidsByDate(selectedDate: String) {
         viewModelScope.launch(Dispatchers.IO) {
 
             // Получаю стартовую и конечную даты из утилиты
             val (startDate, endDate) = DateUtils.getStartAndEndDate()
 // Получаю ответ от репозитория с использованием стартовой и конечной дат
             val response: Response<NearEarthObjectsResponse> =
-                allAsteroidsRepository.getListAsteroidsByDate(startDate, endDate)
+                allAsteroidsRepository.getListAsteroidsByDate(selectedDate, selectedDate)
 
             if (response.isSuccessful) {
 

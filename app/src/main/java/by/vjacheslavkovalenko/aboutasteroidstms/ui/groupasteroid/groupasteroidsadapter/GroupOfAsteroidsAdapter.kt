@@ -36,13 +36,13 @@ import by.vjacheslavkovalenko.aboutasteroidstms.model.Asteroid
 class GroupOfAsteroidsAdapter : ListAdapter<Asteroid, GroupOfAsteroidsViewHolder>(
     object : DiffUtil.ItemCallback<Asteroid>() {
         override fun areItemsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
-//            return false
-            return oldItem.id == newItem.id // Сравнение по уникальному идентификатору
+            return false
+//            return oldItem.id == newItem.id // Сравнение по уникальному идентификатору
         }
 
         override fun areContentsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
-//            return false
-            return oldItem == newItem // Сравнение объектов по содержимому
+            return false
+//            return oldItem == newItem // Сравнение объектов по содержимому
         }
     }
 ) {
@@ -58,25 +58,4 @@ class GroupOfAsteroidsAdapter : ListAdapter<Asteroid, GroupOfAsteroidsViewHolder
         holder.bind(getItem(position))
     }
 }
-//class SubBreedAdapter : ListAdapter<String, SubBreedViewHolder>(
-//    object : DiffUtil.ItemCallback<String>() {
-//        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-//            return false
-//        }
-//
-//        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
-//            return false
-//        }
-//    }
-//) {
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubBreedViewHolder {
-//        return SubBreedViewHolder(
-//            ItemSubBreedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        )
-//    }
-//
-//    override fun onBindViewHolder(holder: SubBreedViewHolder, position: Int) {
-//        holder.bind(getItem(position))
-//    }
-//}
+

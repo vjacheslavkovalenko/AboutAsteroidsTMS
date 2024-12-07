@@ -1,11 +1,20 @@
 package by.vjacheslavkovalenko.aboutasteroidstms.ui.asteroidsbydate.dateasteroidsadapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.ItemDateAsteroidsBinding
 import androidx.recyclerview.widget.RecyclerView
+
+
+
+
+
+
+
+
 
 //333
 //class DateAsteroidsAdapter(
@@ -42,6 +51,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 
+
+
 class DateAsteroidsAdapter(
     private val onDateClick: (String) -> Unit // Обработчик нажатия на дату
 ) : ListAdapter<String, DateAsteroidsViewHolder>(
@@ -64,37 +75,18 @@ class DateAsteroidsAdapter(
         )
     }
 
+
     override fun onBindViewHolder(holder: DateAsteroidsViewHolder, position: Int) {
         val date = getItem(position)
-        holder.bind(date)
+        Log.d("DateAsteroidsAdapter", "Binding date at position $position: $date") // Логируем дату
+        holder.bind(date) // Передаем дату в ViewHolder
 //        holder.bind(getItem(position))
 
-                // Устанавливаем обработчик клика
+        // Устанавливаем обработчик клика
         holder.itemView.setOnClickListener {
             onDateClick(date) // Вызываем обработчик при нажатии
         }
     }
 }
 
-//class SubBreedAdapter : ListAdapter<String, SubBreedViewHolder>(
-//    object : DiffUtil.ItemCallback<String>() {
-//        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-//            return false
-//        }
-//
-//        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
-//            return false
-//        }
-//    }
-//) {
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubBreedViewHolder {
-//        return SubBreedViewHolder(
-//            ItemSubBreedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        )
-//    }
-//
-//    override fun onBindViewHolder(holder: SubBreedViewHolder, position: Int) {
-//        holder.bind(getItem(position))
-//    }
-//}
+
