@@ -28,7 +28,7 @@ fun NearEarthObjectsResponse.toListAsteroidsByDate(): List<AsteroidsByDate> {
 fun AsteroidResponse.toAsteroid() = Asteroid(
     id,
     name,
-    closeApproachDate,
+//    closeApproachDate,
     absoluteMagnitude,
     estimatedDiameter,
     relativeVelocity,

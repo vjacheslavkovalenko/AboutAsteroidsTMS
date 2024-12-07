@@ -13,38 +13,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//***с обработкой ошибок:
-//@HiltViewModel
-//class DetailsAsteroidViewModel @Inject constructor(
-//    private val allAsteroidsRepository: AllAsteroidsRepository
-//) : ViewModel() {
+//***
 //
-//    private val _asteroid = MutableLiveData<Asteroid>()
-//    val asteroid: LiveData<Asteroid> get() = _asteroid
-//
-//    private val _error = MutableLiveData<String>()
-//    val error: LiveData<String> get() = _error
-//
-//    fun loadAsteroidById(id: String) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            try {
-//                // Получаем астероид по ID из репозитория
-//                val response = allAsteroidsRepository.getListAsteroid(id)
-//                if (response.isSuccessful) {
-//                    response.body()?.toAsteroid()?.let {
-//                        _asteroid.postValue(it)
-//                    } ?: run {
-//                        _error.postValue("Ошибка: Астероид не найден")
-//                    }
-//                } else {
-//                    _error.postValue("Ошибка: ${response.message()}")
-//                }
-//            } catch (e: Exception) {
-//                _error.postValue("Ошибка: ${e.message}")
-//            }
-//        }
-//    }
-//}
 
 @HiltViewModel
 class DetailsAsteroidViewModel @Inject constructor(
@@ -55,10 +25,11 @@ class DetailsAsteroidViewModel @Inject constructor(
 //    val picture = MutableLiveData<PictureOfDay>()
     val asteroid = MutableLiveData<Asteroid>()
 
-    fun loadAsteroidById(id: String) {
+    fun loadAsteroidById(id: Long) { // Изменил тип id на Long
         viewModelScope.launch(Dispatchers.IO) {
-            // Получаем астероид по ID из репозитория
-            val response = allAsteroidsRepository.getListAsteroid(id)
+            // Получаем астероид по ID из репозитория, преобразуем Long в String для запроса.
+            val response =
+                allAsteroidsRepository.getListAsteroid(id.toString())// Преобразуем Long в String для запроса
             if (response.isSuccessful) {
                 response.body()?.toAsteroid()?.let {
                     asteroid.postValue(it)

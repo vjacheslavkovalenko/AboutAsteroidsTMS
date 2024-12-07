@@ -6,26 +6,16 @@ import by.vjacheslavkovalenko.aboutasteroidstms.model.Asteroid
 import by.vjacheslavkovalenko.aboutasteroidstms.model.AsteroidsByDate
 import androidx.recyclerview.widget.RecyclerView
 
+//********
 
-//555
-//
-//class GroupOfAsteroidsViewHolder(
-//    private val binding: ItemAsteroidBinding
-//) : RecyclerView.ViewHolder(binding.root) {
-//
-//    // Метод для связывания данных с ViewHolder
-//    fun bind(asteroid: Asteroid) {
-//        // Отображаем имя астероида в TextView
-//        binding.textAsteroid.text = asteroid.name
-//    }
-//}
 class GroupOfAsteroidsViewHolder(
     private val binding: ItemAsteroidBinding
 ) : ViewHolder(binding.root) {
 
     fun bind(asteroid: Asteroid) {
         // Отображаю имя астероида в TextView
-        binding.textAsteroid.text = asteroid.name
+        binding.textAsteroid.text = asteroid.name// Устанавливаем имя астероида
+        // Здесь можно установить другие данные о астероиде при необходимости
     }
 }
 //}

@@ -9,8 +9,8 @@ data class AsteroidResponse(
     val id: Long,
     @SerializedName("name")
     val name: String,
-    @SerializedName("close_approach_date")
-    val closeApproachDate: String,
+//    @SerializedName("close_approach_data")
+//    val closeApproachDate: String,
     @SerializedName("absolute_magnitude_h")
     val absoluteMagnitude: Double,
     @SerializedName("estimated_diameter_max")

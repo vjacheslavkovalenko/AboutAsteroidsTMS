@@ -13,17 +13,6 @@ import by.vjacheslavkovalenko.aboutasteroidstms.model.Asteroid
 import dagger.hilt.android.AndroidEntryPoint
 
 //***
-//package by.vjacheslavkovalenko.aboutasteroidstms.ui.detailsasteroid
-//
-//import android.os.Bundle
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import androidx.fragment.app.Fragment
-//import androidx.fragment.app.viewModels
-//import androidx.lifecycle.Observer
-//import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentDetailsAsteroidBinding
-//import dagger.hilt.android.AndroidEntryPoint
 //
 //@AndroidEntryPoint
 //class DetailsAsteroidFragment : Fragment() {
@@ -36,93 +25,21 @@ import dagger.hilt.android.AndroidEntryPoint
 //        inflater: LayoutInflater,
 //        container: ViewGroup?,
 //        savedInstanceState: Bundle?
-//    ): View {
-//        binding = FragmentDetailsAsteroidBinding.inflate(inflater, container, false)
-//        return binding!!.root // Используем !! для явного указания, что binding не null
+//    ): View? {
+//        binding = FragmentDetailsAsteroidBinding.inflate(inflater)
+//        return binding?.root
 //    }
 //
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)
 //
-//        // Получаем ID астероида из аргументов фрагмента
-//        val asteroidId = arguments?.getString("ASTEROID_ID") ?: return
+//        // Получаем ID астероида из аргументов фрагмента и преобразуем его в Long.
+//        val asteroidId = arguments?.getLong("ASTEROID_ID") ?: return
 //
-//        // Загружаем данные о астероиде по ID
+//        // Загружаем данные о астероиде по ID.
 //        viewModel.loadAsteroidById(asteroidId)
 //
-//        // Наблюдаем за изменениями в объекте астероида
-//        viewModel.asteroid.observe(viewLifecycleOwner, Observer { asteroid ->
-//            asteroid?.let {
-//                displayAsteroidDetails(it)
-//            }
-//        })
-//    }
-//
-//    private fun displayAsteroidDetails(asteroid: Asteroid) {
-//        binding?.textViewName?.text = asteroid.name
-//        binding?.textViewId?.text = "ID: ${asteroid.id}"
-//        binding?.textViewCloseApproachDate?.text = "Close Approach Date: ${asteroid.closeApproachDate}"
-//        binding?.textViewAbsoluteMagnitude?.text = "Absolute Magnitude: ${asteroid.absoluteMagnitude}"
-//        binding?.textViewEstimatedDiameter?.text = "Estimated Diameter: ${asteroid.estimatedDiameter}"
-//        binding?.textViewRelativeVelocity?.text = "Relative Velocity: ${asteroid.relativeVelocity}"
-//        binding?.textViewDistanceFromEarth?.text = "Distance from Earth: ${asteroid.distanceFromEarth}"
-//        binding?.textViewIsPotentiallyHazardous?.text = "Potentially Hazardous: ${if (asteroid.isPotentiallyHazardous) "Yes" else "No"}"
-//
-//        // Загрузка изображения для hazardous (если требуется)
-//        if (asteroid.isPotentiallyHazardous) {
-//            binding?.imageHazardous?.setImageResource(R.drawable.ic_hazardous) // Замените на ваше изображение опасного астероида
-//        } else {
-//            binding?.imageHazardous?.setImageResource(R.drawable.ic_not_hazardous) // Замените на ваше изображение безопасного астероида
-//        }
-//    }
-//
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        binding = null // Освобождаем ресурсы
-//    }
-//}
-
-//555
-//package by.vjacheslavkovalenko.aboutasteroidstms.ui.detailsasteroid
-//
-//import android.os.Bundle
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import androidx.fragment.app.Fragment
-//import androidx.fragment.app.viewModels
-//import androidx.lifecycle.Observer
-//import by.vjacheslavkovalenko.aboutasteroidstms.R
-//import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentDetailsAsteroidBinding
-//import by.vjacheslavkovalenko.aboutasteroidstms.model.Asteroid
-//import dagger.hilt.android.AndroidEntryPoint
-//
-//@AndroidEntryPoint
-//class DetailsAsteroidFragment : Fragment() {
-//
-//    private var binding: FragmentDetailsAsteroidBinding? = null
-//
-//    private val viewModel: DetailsAsteroidViewModel by viewModels()
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        binding = FragmentDetailsAsteroidBinding.inflate(inflater, container, false)
-//        return binding!!.root // Используем !! для явного указания, что binding не null
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        // Получаем ID астероида из аргументов фрагмента
-//        val asteroidId = arguments?.getString("ASTEROID_ID") ?: return
-//
-//        // Загружаем данные о астероиде по ID
-//        viewModel.loadAsteroidById(asteroidId)
-//
-//        // Наблюдаем за изменениями в объекте астероида
+//        // Наблюдаем за изменениями в объекте астероида.
 //        viewModel.asteroid.observe(viewLifecycleOwner, Observer { asteroid ->
 //            asteroid?.let {
 //                displayAsteroidDetails(it)
@@ -146,19 +63,15 @@ import dagger.hilt.android.AndroidEntryPoint
 //        binding?.textViewIsPotentiallyHazardous?.text =
 //            "Potentially Hazardous: ${if (asteroid.isPotentiallyHazardous) "Yes" else "No"}"
 //
-//        // Устанавливаем изображение в зависимости от опасности астероида
-//        if (asteroid.isPotentiallyHazardous) {
-//            binding?.imageHazardous?.setImageResource(R.drawable.asteroid_hazardous)
-//        } else {
-//            binding?.imageHazardous?.setImageResource(R.drawable.asteroid_safe)
-//        }
-//    }
-//
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        binding = null // Освобождаем ресурсы
-//    }
+//         // Устанавливаю изображение в зависимости от опасности астероида
+//         if (asteroid.isPotentiallyHazardous) {
+//             binding?.imageHazardous?.setImageResource(R.drawable.asteroid_hazardous)
+//         } else {
+//             binding?.imageHazardous?.setImageResource(R.drawable.asteroid_safe)
+//         }
+//     }
 //}
+
 
 // сделал, как советовал ии:
 @AndroidEntryPoint
@@ -180,8 +93,11 @@ class DetailsAsteroidFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Получаем ID астероида из аргументов фрагмента
-        val asteroidId = arguments?.getString("ASTEROID_ID") ?: return
+//        // Получаем ID астероида из аргументов фрагмента
+//        val asteroidId = arguments?.getString("ASTEROID_ID") ?: return
+
+        // Получаем ID астероида из аргументов фрагмента и преобразуем его в Long.
+        val asteroidId = arguments?.getLong("ASTEROID_ID") ?: return
 
         // Загружаем данные о астероиде по ID
         viewModel.loadAsteroidById(asteroidId)
@@ -197,8 +113,8 @@ class DetailsAsteroidFragment : Fragment() {
     private fun displayAsteroidDetails(asteroid: Asteroid) {
         binding?.textViewName?.text = asteroid.name
         binding?.textViewId?.text = "ID: ${asteroid.id}"
-        binding?.textViewCloseApproachDate?.text =
-            "Close Approach Date: ${asteroid.closeApproachDate}"
+//        binding?.textViewCloseApproachDate?.text =
+//            "Close Approach Date: ${asteroid.closeApproachDate}"
         binding?.textViewAbsoluteMagnitude?.text =
             "Absolute Magnitude: ${asteroid.absoluteMagnitude}"
         binding?.textViewEstimatedDiameter?.text =
@@ -217,8 +133,8 @@ class DetailsAsteroidFragment : Fragment() {
             binding?.imageHazardous?.setImageResource(R.drawable.asteroid_safe)
         }
     }
-
 }
+
 
 //мой старый код:
 //@AndroidEntryPoint
