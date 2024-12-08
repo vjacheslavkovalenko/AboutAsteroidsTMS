@@ -1,16 +1,15 @@
 package by.vjacheslavkovalenko.aboutasteroidstms.network.entity
 
 import com.google.gson.annotations.SerializedName
+
 //import androidx.room.PrimaryKey
 
 data class AsteroidResponse(
-   // @PrimaryKey
+    // @PrimaryKey
     @SerializedName("id")
     val id: Long,
     @SerializedName("name")
     val name: String,
-//    @SerializedName("close_approach_data")
-//    val closeApproachDate: String,
     @SerializedName("absolute_magnitude_h")
     val absoluteMagnitude: Double,
     @SerializedName("estimated_diameter_max")

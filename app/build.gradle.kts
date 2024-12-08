@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.gms.googleServices)
 }
 
 android {
@@ -64,6 +65,7 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.okhttp.loggingInterceptor)
     implementation(libs.androidx.hilt.common)
+    implementation(libs.firebase.storage)
 
     ksp(libs.hilt.android.compiler)
     ksp(libs.androidx.hilt.compiler)

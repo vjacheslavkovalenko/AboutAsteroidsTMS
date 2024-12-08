@@ -11,13 +11,6 @@ import by.vjacheslavkovalenko.aboutasteroidstms.ui.MainActivity
 import by.vjacheslavkovalenko.aboutasteroidstms.utils.loadUrl
 import dagger.hilt.android.AndroidEntryPoint
 
-//
-
-//
-
-//
-
-//}
 @AndroidEntryPoint
 class PictureOfDayFragment : Fragment() {
 
@@ -34,24 +27,9 @@ class PictureOfDayFragment : Fragment() {
         return binding?.root
     }
 
-
-
-//
-//        binding?.tryAgainButton?.setOnClickListener {
-//            viewModel.loadPictureOfDay()
-//        }
-//        // Пример кнопки для перехода к AsteroidsByDateFragment
-//        binding?.buttonShowAsteroidsByDate?.setOnClickListener {
-//            (activity as? MainActivity)?.showAsteroidsByDateFragment()
-//        }
-//
-//        viewModel.loadPictureOfDay()
-//    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.picture.observe(viewLifecycleOwner) {
-//            Glide.with(requireContext()).load(it.url).into(binding?.imagePictureOfDay)
-//            binding?.imagePictureOfDay?.loadUrl(it.message)
             binding?.imagePictureOfDay?.loadUrl(it.url)
             binding?.errorText?.visibility = View.GONE
             binding?.tryAgainButton?.visibility = View.GONE
@@ -65,7 +43,7 @@ class PictureOfDayFragment : Fragment() {
         binding?.tryAgainButton?.setOnClickListener {
             viewModel.loadPictureOfDay()
         }
-            // Пример кнопки для перехода к AsteroidsByDateFragment
+        // Пример кнопки для перехода к AsteroidsByDateFragment
         binding?.buttonShowAsteroidsByDate?.setOnClickListener {//удалить
             (activity as? MainActivity)?.showAsteroidsByDateFragment()//удалить
         }//удалить
@@ -73,40 +51,3 @@ class PictureOfDayFragment : Fragment() {
         viewModel.loadPictureOfDay()
     }
 }
-//
-//
-//@AndroidEntryPoint
-//class DogImageFragment : Fragment() {
-//
-//    private var binding: FragmentDogImageBinding? = null
-//
-//    private val viewModel: DogImageViewModel by viewModels()
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        binding = FragmentDogImageBinding.inflate(inflater)
-//        return binding?.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        viewModel.image.observe(viewLifecycleOwner) {
-//            binding?.image?.loadUrl(it.message)
-//            binding?.errorText?.visibility = View.GONE
-//            binding?.tryAgainButton?.visibility = View.GONE
-//            binding?.image?.visibility = View.VISIBLE
-//        }
-//        viewModel.showError = {
-//            binding?.errorText?.visibility = View.VISIBLE
-//            binding?.tryAgainButton?.visibility = View.VISIBLE
-//            binding?.image?.visibility = View.GONE
-//        }
-//        binding?.tryAgainButton?.setOnClickListener {
-//            viewModel.loadDogImage()
-//        }
-//        viewModel.loadDogImage()
-//    }
-//}

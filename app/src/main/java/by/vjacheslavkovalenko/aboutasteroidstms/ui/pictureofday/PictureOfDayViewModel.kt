@@ -15,10 +15,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
-import by.vjacheslavkovalenko.aboutasteroidstms.utils.toPictureOfDay
 import kotlinx.coroutines.CoroutineExceptionHandler
 
-private const val LOG_TAG = "hisPictureOfDayViewModel"
+private const val LOG_TAG = "thisPictureOfDayViewModel"
 
 @HiltViewModel
 class PictureOfDayViewModel @Inject constructor(
@@ -37,14 +36,11 @@ class PictureOfDayViewModel @Inject constructor(
 //            Log.e("ThisPictureOfDayViewModel", throwable.localizedMessage)
         }
 
-
     fun loadPictureOfDay() {
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
-//        viewModelScope.launch(Dispatchers.IO) {
             val response: Response<PictureOfDayResponse> = repository.getPictureOfDay()
             if (response.isSuccessful) {
                 response.body()?.let { pictureOfDayResponse ->
-//                    picture.postValue(PictureOfDay(pictureOfDayResponse.url))
                     picture.postValue(pictureOfDayResponse.toPictureOfDay())
                 }
             } else {

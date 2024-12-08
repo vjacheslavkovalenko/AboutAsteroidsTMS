@@ -12,68 +12,6 @@ import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentDetailsAster
 import by.vjacheslavkovalenko.aboutasteroidstms.model.Asteroid
 import dagger.hilt.android.AndroidEntryPoint
 
-//***
-//
-//@AndroidEntryPoint
-//class DetailsAsteroidFragment : Fragment() {
-//
-//    private var binding: FragmentDetailsAsteroidBinding? = null
-//
-//    private val viewModel: DetailsAsteroidViewModel by viewModels()
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        binding = FragmentDetailsAsteroidBinding.inflate(inflater)
-//        return binding?.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        // Получаем ID астероида из аргументов фрагмента и преобразуем его в Long.
-//        val asteroidId = arguments?.getLong("ASTEROID_ID") ?: return
-//
-//        // Загружаем данные о астероиде по ID.
-//        viewModel.loadAsteroidById(asteroidId)
-//
-//        // Наблюдаем за изменениями в объекте астероида.
-//        viewModel.asteroid.observe(viewLifecycleOwner, Observer { asteroid ->
-//            asteroid?.let {
-//                displayAsteroidDetails(it)
-//            }
-//        })
-//    }
-//
-//    private fun displayAsteroidDetails(asteroid: Asteroid) {
-//        binding?.textViewName?.text = asteroid.name
-//        binding?.textViewId?.text = "ID: ${asteroid.id}"
-//        binding?.textViewCloseApproachDate?.text =
-//            "Close Approach Date: ${asteroid.closeApproachDate}"
-//        binding?.textViewAbsoluteMagnitude?.text =
-//            "Absolute Magnitude: ${asteroid.absoluteMagnitude}"
-//        binding?.textViewEstimatedDiameter?.text =
-//            "Estimated Diameter: ${asteroid.estimatedDiameter}"
-//        binding?.textViewRelativeVelocity?.text =
-//            "Relative Velocity: ${asteroid.relativeVelocity}"
-//        binding?.textViewDistanceFromEarth?.text =
-//            "Distance from Earth: ${asteroid.distanceFromEarth}"
-//        binding?.textViewIsPotentiallyHazardous?.text =
-//            "Potentially Hazardous: ${if (asteroid.isPotentiallyHazardous) "Yes" else "No"}"
-//
-//         // Устанавливаю изображение в зависимости от опасности астероида
-//         if (asteroid.isPotentiallyHazardous) {
-//             binding?.imageHazardous?.setImageResource(R.drawable.asteroid_hazardous)
-//         } else {
-//             binding?.imageHazardous?.setImageResource(R.drawable.asteroid_safe)
-//         }
-//     }
-//}
-
-
-// сделал, как советовал ии:
 @AndroidEntryPoint
 class DetailsAsteroidFragment : Fragment() {
 
@@ -93,16 +31,10 @@ class DetailsAsteroidFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        // Получаем ID астероида из аргументов фрагмента
-//        val asteroidId = arguments?.getString("ASTEROID_ID") ?: return
-
-        // Получаем ID астероида из аргументов фрагмента и преобразуем его в Long.
         val asteroidId = arguments?.getLong("ASTEROID_ID") ?: return
 
-        // Загружаем данные о астероиде по ID
         viewModel.loadAsteroidById(asteroidId)
 
-        // Наблюдаем за изменениями в объекте астероида
         viewModel.asteroid.observe(viewLifecycleOwner, Observer { asteroid ->
             asteroid?.let {
                 displayAsteroidDetails(it)
@@ -113,8 +45,6 @@ class DetailsAsteroidFragment : Fragment() {
     private fun displayAsteroidDetails(asteroid: Asteroid) {
         binding?.textViewName?.text = asteroid.name
         binding?.textViewId?.text = "ID: ${asteroid.id}"
-//        binding?.textViewCloseApproachDate?.text =
-//            "Close Approach Date: ${asteroid.closeApproachDate}"
         binding?.textViewAbsoluteMagnitude?.text =
             "Absolute Magnitude: ${asteroid.absoluteMagnitude}"
         binding?.textViewEstimatedDiameter?.text =
@@ -126,7 +56,6 @@ class DetailsAsteroidFragment : Fragment() {
         binding?.textViewIsPotentiallyHazardous?.text =
             "Potentially Hazardous: ${if (asteroid.isPotentiallyHazardous) "Yes" else "No"}"
 
-        // Устанавливаю изображение в зависимости от опасности астероида
         if (asteroid.isPotentiallyHazardous) {
             binding?.imageHazardous?.setImageResource(R.drawable.asteroid_hazardous)
         } else {
@@ -134,93 +63,3 @@ class DetailsAsteroidFragment : Fragment() {
         }
     }
 }
-
-
-//мой старый код:
-//@AndroidEntryPoint
-//class DetailsAsteroidFragment : Fragment() {
-//
-//    private var binding: FragmentDetailsAsteroidBinding? = null
-//
-//    private val viewModel: DetailsAsteroidViewModel by viewModels()
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        binding = FragmentDetailsAsteroidBinding.inflate(inflater)
-//        return binding?.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        viewModel.asteroid.observe(viewLifecycleOwner) {
-//
-//        viewModel.loadAsteroidById(id)//после этого ничего ниже дописывать не надо (кроме скобок{)
-//
-//        private fun displayAsteroidDetails(asteroid: Asteroid) {
-//            binding?.textViewName?.text = asteroid.name
-//            binding?.textViewId?.text = "ID: ${asteroid.id}"
-//            binding?.textViewCloseApproachDate?.text =
-//                "Close Approach Date: ${asteroid.closeApproachDate}"
-//            binding?.textViewAbsoluteMagnitude?.text =
-//                "Absolute Magnitude: ${asteroid.absoluteMagnitude}"
-//            binding?.textViewEstimatedDiameter?.text =
-//                "Estimated Diameter: ${asteroid.estimatedDiameter}"
-//            binding?.textViewRelativeVelocity?.text =
-//                "Relative Velocity: ${asteroid.relativeVelocity}"
-//            binding?.textViewDistanceFromEarth?.text =
-//                "Distance from Earth: ${asteroid.distanceFromEarth}"
-//            binding?.textViewIsPotentiallyHazardous?.text =
-//                "Potentially Hazardous: ${if (asteroid.isPotentiallyHazardous) "Yes" else "No"}"
-//
-//            // Загрузка изображения для hazardous (если требуется)
-//            if (asteroid.isPotentiallyHazardous) {
-//                binding?.imageHazardous?.setImageResource(R.drawable.asteroid_hazardous)
-//            } else {
-//                binding?.imageHazardous?.setImageResource(R.drawable.asteroid_safe)
-//            }
-//        }
-//    }
-//}
-
-//@AndroidEntryPoint
-//class BreedListFragment : Fragment() {
-//
-//    private var binding: FragmentBreedListBinding? = null
-//
-//    private val viewModel: BreedListViewModel by viewModels()
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        binding = FragmentBreedListBinding.inflate(inflater)
-//        return binding?.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        viewModel.listBreed.observe(viewLifecycleOwner) {
-//            setList(it)
-//        }
-//        viewModel.image.observe(viewLifecycleOwner) {
-//            binding?.image?.loadUrl(it)
-//        }
-//        viewModel.loadListBreed()
-//    }
-//
-//    private fun setList(list: List<Breed>) {
-//        binding?.recyclerView?.run {
-//            if (adapter == null) {
-//                adapter = BreedAdapter {
-//                    viewModel.loadBreedImage(it)
-//                }
-//                layoutManager = LinearLayoutManager(requireContext())
-//            }
-//            (adapter as? BreedAdapter)?.submitList(list)
-//        }
-//    }
-//}

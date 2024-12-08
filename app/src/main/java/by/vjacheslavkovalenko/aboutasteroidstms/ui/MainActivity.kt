@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     }//удалить
 
-        // Метод для перехода к AsteroidsByDateFragment
+    // Метод для перехода к AsteroidsByDateFragment
     fun showAsteroidsByDateFragment() {//удалить
         supportFragmentManager.beginTransaction()//удалить
             .replace(R.id.container, AsteroidsByDateFragment())//удалить
@@ -36,27 +36,3 @@ class MainActivity : AppCompatActivity() {
             .commit()//удалить
     }
 }
-
-
-
-//@AndroidEntryPoint
-//class MainActivity : AppCompatActivity() {
-//
-//    private var binding: ActivityMainBinding? = null
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding?.root)
-//
-//        // Настройка NavHostFragment для навигации между фрагментами.
-//        val navHostFragment =
-//            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-//        navHostFragment?.navController?.setGraph(R.navigation.main_nav_graph)
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        binding = null
-//    }
-//}

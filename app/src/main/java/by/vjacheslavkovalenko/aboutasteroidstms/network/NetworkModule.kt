@@ -20,7 +20,6 @@ object NetworkModule {
     fun provideApi(): Api {
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASEURL)
-//            .baseUrl("https://dog.ceo/api/")
             .client(
                 OkHttpClient.Builder()
                     .addInterceptor(
@@ -33,22 +32,4 @@ object NetworkModule {
             .build()
         return retrofit.create(Api::class.java)
     }
-
-//    @Provides
-//    @Singleton
-//    fun provideFactApi(): FactApi {
-//        val retrofit: Retrofit = Retrofit.Builder()
-//            .baseUrl("https://dog-facts-api.herokuapp.com/api/v1/")
-//            .client(
-//                OkHttpClient.Builder()
-//                .addInterceptor(
-//                    HttpLoggingInterceptor().apply {
-//                        setLevel(HttpLoggingInterceptor.Level.BODY)
-//                    }
-//                )
-//                .build())
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//        return retrofit.create(FactApi::class.java)
-//    }
 }

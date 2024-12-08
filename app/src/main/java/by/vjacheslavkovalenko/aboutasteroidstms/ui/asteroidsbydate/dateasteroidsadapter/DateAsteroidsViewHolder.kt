@@ -9,10 +9,8 @@ class DateAsteroidsViewHolder(
 ) : ViewHolder(binding.root) {
 
     fun bind(dateAsteroids: String) {
-        // Устанавливаем текст даты в TextView
+
         binding.dateOfGroupAsteroids.text = dateAsteroids
-        Log.d("DateAsteroidsViewHolder", "Binding date: $dateAsteroids") // Логируем установленную дату
+        Log.d("DateAsteroidsViewHolder", "Binding date: $dateAsteroids")
     }
-
 }
-
