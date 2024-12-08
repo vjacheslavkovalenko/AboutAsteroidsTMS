@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AboutAsteroidsTMS</string>
+    <string name="picture_of_day">Picture of day</string>
+    <string name="text_connection_error">Connection error</string>
+    <string name="button_try_again">Try again</string>
+    <string name="text_description_date_asteroids">Выберите дату\n (будут показаны самые близкие к Земле астероиды)</string>
 </resources>
