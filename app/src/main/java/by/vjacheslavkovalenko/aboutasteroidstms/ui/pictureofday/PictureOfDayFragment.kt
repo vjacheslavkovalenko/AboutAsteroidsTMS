@@ -43,10 +43,10 @@ class PictureOfDayFragment : Fragment() {
         binding?.tryAgainButton?.setOnClickListener {
             viewModel.loadPictureOfDay()
         }
-        // Пример кнопки для перехода к AsteroidsByDateFragment
-        binding?.buttonShowAsteroidsByDate?.setOnClickListener {//удалить
-            (activity as? MainActivity)?.showAsteroidsByDateFragment()//удалить
-        }//удалить
+//        // Пример кнопки для перехода к AsteroidsByDateFragment
+//        binding?.buttonShowAsteroidsByDate?.setOnClickListener {//удалить
+//            (activity as? MainActivity)?.showAsteroidsByDateFragment()//удалить
+//        }//удалить
 
         viewModel.loadPictureOfDay()
     }

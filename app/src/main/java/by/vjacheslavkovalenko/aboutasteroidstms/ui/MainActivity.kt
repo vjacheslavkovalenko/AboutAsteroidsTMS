@@ -16,23 +16,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.container, AsteroidsByDateFragment())
-//            .commit()
-        //для запуска другого фрагмента
-        if (savedInstanceState == null) {//удалить
-            supportFragmentManager.beginTransaction()//удалить
-                .replace(R.id.container, PictureOfDayFragment())//удалить
-                .commit()//удалить
-        }//удалить
-
-    }//удалить
-
-    // Метод для перехода к AsteroidsByDateFragment
-    fun showAsteroidsByDateFragment() {//удалить
-        supportFragmentManager.beginTransaction()//удалить
-            .replace(R.id.container, AsteroidsByDateFragment())//удалить
-            .addToBackStack(null) // Добавляем в стек для возврата назад//удалить
-            .commit()//удалить
+////        supportFragmentManager.beginTransaction()
+////            .replace(R.id.container, AsteroidsByDateFragment())
+////            .commit()
+//        //для запуска другого фрагмента
+//        if (savedInstanceState == null) {//удалить
+//            supportFragmentManager.beginTransaction()//удалить
+//                .replace(R.id.container, MainFragment())//удалить
+//                .commit()//удалить
+//        }//удалить
+//
+//    }//удалить
+//
+//    // Метод для перехода к AsteroidsByDateFragment
+//    fun showAsteroidsByDateFragment() {//удалить
+//        supportFragmentManager.beginTransaction()//удалить
+//            .replace(R.id.container, AsteroidsByDateFragment())//удалить
+//            .addToBackStack(null) // Добавляем в стек для возврата назад//удалить
+//            .commit()//удалить
     }
 }
