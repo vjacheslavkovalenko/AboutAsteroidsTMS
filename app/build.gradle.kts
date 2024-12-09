@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.gms.googleServices)
+//    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
@@ -66,6 +67,7 @@ dependencies {
     implementation(libs.okhttp.loggingInterceptor)
     implementation(libs.androidx.hilt.common)
     implementation(libs.firebase.storage)
+    implementation(libs.firebase.database)
 
     ksp(libs.hilt.android.compiler)
     ksp(libs.androidx.hilt.compiler)
