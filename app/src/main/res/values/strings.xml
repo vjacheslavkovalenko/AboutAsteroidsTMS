@@ -8,6 +8,5 @@
     <string name="text_view_aboutapp_description">Данное приложение является кратким справочником по астероидам.
 Здесь Вы можете получить сведения о малых телах солнечной системы, увидеть Картинку дня от NASA, а также получить данные об астероидах посредством Радара (предоставляется бесплатно в виде API агентством NASA).</string>
     <string name="text_view_aboutapp_use_instruments">*При написании данного приложения, использовались: архитектура MVVM, Glide, API (api.nasa.gov), Retrofit,  RecyclerView, View Binding, GSON</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
