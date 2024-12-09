@@ -11,7 +11,14 @@
     <fragment
         android:id="@+id/detailsAsteroidFragment"
         android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.detailsasteroid.DetailsAsteroidFragment"
-        android:label="DetailsAsteroidFragment" />
+        android:label="DetailsAsteroidFragment" >
+        <action
+            android:id="@+id/action_detailsAsteroidFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_detailsAsteroidFragment_to_groupOfAsteroidsFragment"
+            app:destination="@id/groupOfAsteroidsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/asteroidsByDateFragment"
         android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.asteroidsbydate.AsteroidsByDateFragment"

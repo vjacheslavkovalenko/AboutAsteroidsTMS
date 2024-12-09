@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import by.vjacheslavkovalenko.aboutasteroidstms.R
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentDetailsAsteroidBinding
 import by.vjacheslavkovalenko.aboutasteroidstms.model.Asteroid
@@ -40,6 +41,15 @@ class DetailsAsteroidFragment : Fragment() {
                 displayAsteroidDetails(it)
             }
         })
+
+        binding?.buttonBackDetails?.setOnClickListener {
+//            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_groupOfAsteroidsFragment)
+            findNavController().popBackStack()
+        }
+
+        binding?.buttonHomeDetails?.setOnClickListener {
+            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_mainFragment)
+        }
     }
 
     private fun displayAsteroidDetails(asteroid: Asteroid) {

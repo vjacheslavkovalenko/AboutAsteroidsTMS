@@ -13,6 +13,7 @@ import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentAsteroidsByD
 import by.vjacheslavkovalenko.aboutasteroidstms.ui.asteroidsbydate.dateasteroidsadapter.DateAsteroidsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.vjacheslavkovalenko.aboutasteroidstms.R
 import by.vjacheslavkovalenko.aboutasteroidstms.ui.groupasteroid.GroupOfAsteroidsFragment
 
@@ -41,6 +42,10 @@ class AsteroidsByDateFragment : Fragment() {
         }
 
         viewModel.loadListAsteroidsByDate()
+
+        binding?.buttonBackDate?.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun setList(list: List<String>) {

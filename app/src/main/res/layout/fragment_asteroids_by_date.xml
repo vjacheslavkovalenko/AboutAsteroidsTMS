@@ -19,7 +19,7 @@
         android:id="@+id/textViewDescriptionDateAsteroids"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/text_description_date_asteroids"
         android:textAlignment="center"
         android:textColor="@color/text_grey"
@@ -30,9 +30,24 @@
         android:id="@+id/recyclerViewDate"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewDescriptionDateAsteroids"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"/>
+        app:layout_constraintTop_toBottomOf="@id/textViewDescriptionDateAsteroids" />
+
+    <Button
+        android:id="@+id/buttonBackDate"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button_border"
+        android:text="@string/button_back"
+        android:textColor="@color/default_text_color"
+        android:textColorLink="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#FFFFFF"
+        app:strokeColor="#FFFFFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

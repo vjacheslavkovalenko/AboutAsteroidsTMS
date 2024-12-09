@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.vjacheslavkovalenko.aboutasteroidstms.R
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentGroupOfAsteroidsBinding
@@ -45,6 +46,10 @@ class GroupOfAsteroidsFragment : Fragment() {
         }
 
         selectedDate?.let { viewModel.loadListAsteroidsByDate(it) }
+
+        binding?.buttonBackGroup?.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun setList(list: List<AsteroidsByDate>) {
