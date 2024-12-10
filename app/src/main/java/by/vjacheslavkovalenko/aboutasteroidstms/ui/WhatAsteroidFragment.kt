@@ -16,6 +16,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+
+
 //
 //class WhatAsteroidFragment : Fragment() {
 //
@@ -69,11 +71,6 @@ import kotlinx.coroutines.launch
 //            emit(htmlContent) // Отправляем HTML-контент через Flow
 //        }
 //    }
-//
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        binding = null // Освобождаем ресурсы
-//    }
 //}
 @AndroidEntryPoint
 class WhatAsteroidFragment : Fragment() {
@@ -105,6 +102,16 @@ class WhatAsteroidFragment : Fragment() {
             getHtmlContentFlow().collect { htmlContent ->
                 // Загружаем HTML-контент в WebView
                 binding?.webViewWhatAsteroid?.loadData(htmlContent, "text/html; charset=utf-8", "UTF-8")
+
+                binding?.webViewWhatAsteroid?.apply {
+                    settings.allowFileAccess = true
+//                    settings.allowFileAccessFromFileURLs = true
+//                    settings.allowUniversalAccessFromFileURLs = true
+                    settings.javaScriptEnabled = true
+//            loadUrl(url)
+                }
+
+
             }
         }
 
@@ -115,33 +122,62 @@ class WhatAsteroidFragment : Fragment() {
 //            loadUrl(url)
 //        }
 
+
         binding?.buttonBackWhatAsteroid?.setOnClickListener {
             findNavController().popBackStack()
         }
     }
 
+
+
+    //    private fun getHtmlContentFlow(): Flow<String> {
+//        return flow {
+//            // Читаем HTML-файл из папки assets и возвращаем его содержимое как строку
+//            val htmlFileName = "whatisanasteroid.html"
+//            val inputStream = requireActivity().assets.open("html/$htmlFileName")
+//            val htmlContent = inputStream.bufferedReader().use { it.readText() }
+//            emit(htmlContent) // Отправляем HTML-контент через Flow
+//        }
+//    }
         private fun getHtmlContentFlow(): Flow<String> {
         return flow {
-            // Здесь вы можете загружать данные из сети или локального источника.
-            // Например, просто возвращаем статический HTML-контент.
-            val htmlContent = """
-                <!DOCTYPE html>
-                <html lang="ru">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Что такое астероиды</title>
-                    <style>
-                        body { background-color: black; color: white; }
-                    </style>
-                </head>
-                <body>
-                    <h2>Что такое астероиды</h2>
-                    <p>Астероиды — это твердые каменистые тела...</p>
-                </body>
-                </html>
-            """.trimIndent()
+            // Читаем HTML-файл из папки assets и возвращаем его содержимое как строку
+            val htmlFileName = "whatisanasteroid.html"
+            val inputStream = requireActivity().assets.open("html/$htmlFileName")
+            val htmlContent = inputStream.bufferedReader().use { it.readText() }
             emit(htmlContent) // Отправляем HTML-контент через Flow
+
+
+            // Здесь просто статический HTML-контент.
+//            val htmlContent = """
+//                <!DOCTYPE html>
+//                <html lang="ru">
+//                <head>
+//                    <meta charset="UTF-8">
+//                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//                    <title>Что такое астероиды</title>
+//                    <style>
+//                        body { background-color: black; color: white; }
+//                    </style>
+//                </head>
+//                <body>
+//                    <h2>Что такое астероиды</h2>
+//                    <p>Астероиды — это твердые каменистые тела...</p>
+//                </body>
+//                </html>
+//            """.trimIndent()
+//            emit(htmlContent) // Отправляем HTML-контент через Flow
         }
     }
 }
+
+
+
+//
+
+//
+
+//
+
+//
+
