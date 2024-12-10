@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import by.vjacheslavkovalenko.aboutasteroidstms.R
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentDetailsAsteroidBinding
 import by.vjacheslavkovalenko.aboutasteroidstms.model.Asteroid
+import by.vjacheslavkovalenko.aboutasteroidstms.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,14 +43,37 @@ class DetailsAsteroidFragment : Fragment() {
             }
         })
 
+//        binding?.buttonBackDetails?.setOnClickListener {
+////            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_groupOfAsteroidsFragment)
+//            findNavController().popBackStack()
+//        }
+//
+//        binding?.buttonHomeDetails?.setOnClickListener {
+//            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_mainFragment)
+//        }
+
+
+//        // Обработчик для кнопки "Назад"
+//        binding?.buttonBackDetails?.setOnClickListener {
+//            findNavController().navigateUp() // Переход на предыдущий экран
+//        }
+//
+//        // Обработчик для кнопки "Главная"
+//        binding?.buttonHomeDetails?.setOnClickListener {
+//            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_mainFragment) // Замените на ID вашего фрагмента главной страницы
+//        }
+//
+
+        // Обработчик для кнопки "Назад"
         binding?.buttonBackDetails?.setOnClickListener {
-//            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_groupOfAsteroidsFragment)
-            findNavController().popBackStack()
+            (activity as? MainActivity)?.onBackPressed() // Вызов метода для обработки нажатия "Назад"
         }
 
-        binding?.buttonHomeDetails?.setOnClickListener {
-            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_mainFragment)
-        }
+//        // Обработчик для кнопки "Главная"
+//        binding?.buttonHomeDetails?.setOnClickListener {
+//            (activity as? MainActivity)?.showHomeFragment() // Вызов метода для перехода на главную страницу
+//        }
+
     }
 
     private fun displayAsteroidDetails(asteroid: Asteroid) {
