@@ -27,7 +27,6 @@ class DateAsteroidsAdapter(
         )
     }
 
-
     override fun onBindViewHolder(holder: DateAsteroidsViewHolder, position: Int) {
         val date = getItem(position)
         Log.d("DateAsteroidsAdapter", "Binding date at position $position: $date")
@@ -38,5 +37,3 @@ class DateAsteroidsAdapter(
         }
     }
 }
-
-

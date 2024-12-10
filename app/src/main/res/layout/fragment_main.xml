@@ -19,7 +19,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/button_фsteroids_by_date"
+        android:background="@drawable/button_border"
+        android:text="@string/button_asteroids_by_date"
+        android:textColor="@color/default_text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/picture_of_day_container" />
@@ -29,7 +31,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:background="@drawable/button_border"
         android:text="@string/button_what_asteroid"
+        android:textColor="@color/default_text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonAsteroidsByDate" />
@@ -39,7 +43,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:background="@drawable/button_border"
         android:text="@string/button_discovery"
+        android:textColor="@color/default_text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonWhatAsteroid" />
@@ -49,7 +55,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:background="@drawable/button_border"
         android:text="@string/text_view_aboutapp_title"
+        android:textColor="@color/default_text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonDiscovery" />

@@ -12,8 +12,6 @@ import by.vjacheslavkovalenko.aboutasteroidstms.repository.FirebaseRepository
 import dagger.hilt.android.AndroidEntryPoint
 import android.webkit.WebViewClient
 
-
-
 @AndroidEntryPoint
 class DiscoveryAsteroidsFragment : Fragment() {
 
@@ -33,15 +31,12 @@ class DiscoveryAsteroidsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //        // Установите WebViewClient для обработки загрузки страниц
         binding?.webViewDiscovery?.webViewClient = WebViewClient()
 
-        //Получаем HTML-код из Firebase и загружаем его в WebView
         firebaseRepository.getHtmlContent { htmlContent ->
             htmlContent?.let {
                 binding?.webViewDiscovery?.loadData(it, "text/html", "UTF-8")
             } ?: run {
-                // Обработка случая, когда HTML-код не найден
                 binding?.webViewDiscovery?.loadData(
                     "<h1>Error</h1><p>HTML content not found.</p>",
                     "text/html",
@@ -55,4 +50,3 @@ class DiscoveryAsteroidsFragment : Fragment() {
         }
     }
 }
-

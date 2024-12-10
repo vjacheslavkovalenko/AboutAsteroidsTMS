@@ -9,6 +9,7 @@
         android:id="@+id/imageRadarAsteroids"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:contentDescription="@string/picture_radar"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

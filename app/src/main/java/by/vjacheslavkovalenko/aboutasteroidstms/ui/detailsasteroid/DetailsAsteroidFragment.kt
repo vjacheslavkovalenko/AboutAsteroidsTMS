@@ -43,28 +43,9 @@ class DetailsAsteroidFragment : Fragment() {
             }
         })
 
-//        binding?.buttonBackDetails?.setOnClickListener {
-////            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_groupOfAsteroidsFragment)
-////            findNavController().popBackStack()
-//            findNavController().navigateUp()
-//        }
-
-//        binding?.buttonHomeDetails?.setOnClickListener {
-//            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_mainFragment)
-//        }
-
-
-
-        // Обработчик для кнопки "Назад"
         binding?.buttonBackDetails?.setOnClickListener {
             (activity as? MainActivity)?.onBackPressed() // Вызов метода для обработки нажатия "Назад"
         }
-
-//        // Обработчик для кнопки "Главная"
-//        binding?.buttonHomeDetails?.setOnClickListener {
-//            (activity as? MainActivity)?.showHomeFragment() // Вызов метода для перехода на главную страницу
-//        }
-
 
     }
 

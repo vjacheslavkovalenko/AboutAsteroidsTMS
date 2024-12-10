@@ -8,6 +8,3 @@ fun ImageView.loadUrl(url: String) {
         .load(url)
         .into(this)
 }
-
-//Вызов из любого места:
-//binding?.image?.loadUrl(it.message)
