@@ -10,7 +10,7 @@ class FirebaseRepository {
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     fun getHtmlContent(callback: (String?) -> Unit) {
-        database.child("discover").child("htmlContent").get().addOnSuccessListener { snapshot ->
+        database.child("discover").get().addOnSuccessListener { snapshot ->
             if (snapshot.exists()) {
                 val htmlContent = snapshot.value as? String
                 callback(htmlContent)
