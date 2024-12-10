@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.vjacheslavkovalenko.aboutasteroidstms.R
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentGroupOfAsteroidsBinding
 import by.vjacheslavkovalenko.aboutasteroidstms.model.AsteroidsByDate
+import by.vjacheslavkovalenko.aboutasteroidstms.ui.MainActivity
 import by.vjacheslavkovalenko.aboutasteroidstms.ui.detailsasteroid.DetailsAsteroidFragment
 import by.vjacheslavkovalenko.aboutasteroidstms.ui.groupasteroid.groupasteroidsadapter.GroupOfAsteroidsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,6 +47,10 @@ class GroupOfAsteroidsFragment : Fragment() {
         }
 
         selectedDate?.let { viewModel.loadListAsteroidsByDate(it) }
+
+        binding?.buttonBackGroup?.setOnClickListener {
+            (activity as? MainActivity)?.onBackPressed()
+        }
     }
 
     private fun setList(list: List<AsteroidsByDate>) {

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ПроАстероидыTMS</string>
+    <string name="picture_of_day">Фото дня</string>
+    <string name="picture_radar">Изображение радара астероидов</string>
+    <string name="picture_group">Изображение группы астероидов</string>
+    <string name="picture_hazardous">Изображение опасности астероида</string>
+    <string name="text_connection_error">Ошибка соединения</string>
+    <string name="button_try_again">Попробуйте еще раз</string>
+    <string name="text_description_date_asteroids">Выберите дату\n (будут показаны самые близкие к Земле астероиды)</string>
+    <string name="text_view_aboutapp_title">О приложении</string>
+    <string name="text_view_aboutapp_description">Данное приложение является кратким справочником по астероидам.
+Здесь Вы можете получить сведения о малых телах солнечной системы, увидеть Картинку дня от NASA, а также получить данные об астероидах посредством Радара (предоставляется бесплатно в виде API агентством NASA).</string>
+    <string name="text_view_aboutapp_use_instruments">*При написании данного приложения, использовались: архитектура MVVM, Glide, API (api.nasa.gov), Retrofit,  RecyclerView, View Binding, GSON, Lottie</string>
+    <string name="button_back">Назад</string>
+    <string name="button_home">Главная</string>
+    <string name="button_asteroids_by_date">Перейти к астероидам по дате</string>
+    <string name="button_what_asteroid">Что такое астероиды</string>
+    <string name="button_discovery">Как открыть астероид</string>
+</resources>

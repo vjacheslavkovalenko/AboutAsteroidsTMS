@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import by.vjacheslavkovalenko.aboutasteroidstms.R
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentDetailsAsteroidBinding
 import by.vjacheslavkovalenko.aboutasteroidstms.model.Asteroid
+import by.vjacheslavkovalenko.aboutasteroidstms.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,6 +42,11 @@ class DetailsAsteroidFragment : Fragment() {
                 displayAsteroidDetails(it)
             }
         })
+
+        binding?.buttonBackDetails?.setOnClickListener {
+            (activity as? MainActivity)?.onBackPressed() // Вызов метода для обработки нажатия "Назад"
+        }
+
     }
 
     private fun displayAsteroidDetails(asteroid: Asteroid) {

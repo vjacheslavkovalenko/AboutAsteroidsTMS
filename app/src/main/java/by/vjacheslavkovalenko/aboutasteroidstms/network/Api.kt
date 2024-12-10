@@ -16,7 +16,6 @@ interface Api {
         @Query("api_key") apiKey: String = Constants.APIKEY
     ): Response<PictureOfDayResponse>
 
-    //получаю группу астероидов на конкретную дату (-ы)
     @GET("neo/rest/v1/feed")
     suspend fun fetchAsteroidsByDate(
         @Query("start_date") startDate: String,
@@ -24,7 +23,6 @@ interface Api {
         @Query("api_key") apiKey: String = Constants.APIKEY
     ): Response<NearEarthObjectsResponse>
 
-    //получаю конкретный астероид по id:
     @GET("neo/rest/v1/neo/{id}")
     suspend fun fetchAsteroid(
         @Path("id") id: String,

@@ -33,7 +33,6 @@ class GroupOfAsteroidsViewModel @Inject constructor(
                 response.body()?.toListAsteroidsByDate()?.let {
                     listAsteroidsByDate.postValue(it)
                 }
-
             }
         }
     }

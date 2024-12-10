@@ -13,6 +13,7 @@ import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentAsteroidsByD
 import by.vjacheslavkovalenko.aboutasteroidstms.ui.asteroidsbydate.dateasteroidsadapter.DateAsteroidsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.vjacheslavkovalenko.aboutasteroidstms.R
 import by.vjacheslavkovalenko.aboutasteroidstms.ui.groupasteroid.GroupOfAsteroidsFragment
 
@@ -41,6 +42,10 @@ class AsteroidsByDateFragment : Fragment() {
         }
 
         viewModel.loadListAsteroidsByDate()
+
+        binding?.buttonBackDate?.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun setList(list: List<String>) {
@@ -73,63 +78,3 @@ class AsteroidsByDateFragment : Fragment() {
         }
     }
 }
-
-
-//@AndroidEntryPoint
-//class AsteroidsByDateFragment : Fragment(){
-//
-//    private var binding: FragmentAsteroidsByDateBinding? = null
-//
-//    private val viewModel: AsteroidsByDateViewModel  by viewModels()
-//
-//        override fun onCreateView(
-//            inflater: LayoutInflater,
-//            container: ViewGroup?,
-//            savedInstanceState: Bundle?
-//    ): View? {
-//        binding = FragmentAsteroidsByDateBinding.inflate(inflater)
-//        return binding?.root
-//    }
-//    //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-////        super.onViewCreated(view, savedInstanceState)
-////
-////        // Инициализация адаптера и RecyclerView
-////        adapter = DateAsteroidsAdapter()
-////        binding?.recyclerViewDate?.layoutManager = LinearLayoutManager(requireContext())
-////        binding?.recyclerViewDate?.adapter = adapter
-////
-////        // Наблюдение за данными из ViewModel
-////        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) { list ->
-////            setList(list)
-////        }
-////
-////        // Загрузка данных из ViewModel
-////        viewModel.loadListAsteroidsByDate()
-////    }
-//        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        viewModel.listAsteroidsByDate.observe(viewLifecycleOwner) {
-//            setList(it)
-//        }
-//            //это для фотки собаки
-////        viewModel.image.observe(viewLifecycleOwner) {
-////            binding?.image?.loadUrl(it)
-////        }
-////        viewModel.loadListAsteroidsByDate().toString()
-//        viewModel.loadListAsteroidsByDate()
-//    }
-//
-////        private fun setList(list: List<AsteroidsByDate>) {
-//        private fun setList(list: List<String>) {
-//        binding?.recyclerViewDate?.run {
-//            if (adapter == null) {
-////                adapter = DateAsteroidsAdapter {
-////                    viewModel.loadBreedImage(it)
-////                }
-//                layoutManager = LinearLayoutManager(requireContext())
-//            }
-//            (adapter as? DateAsteroidsAdapter)?.submitList(list)
-//        }
-//    }
-//}
-

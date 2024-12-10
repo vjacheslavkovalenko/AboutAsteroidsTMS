@@ -2,12 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fragment_date_background">
 
     <ImageView
         android:id="@+id/imageRadarAsteroids"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:contentDescription="@string/picture_radar"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,17 +20,36 @@
         android:id="@+id/textViewDescriptionDateAsteroids"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/text_description_date_asteroids"
         android:textAlignment="center"
+        android:textColor="@color/text_grey"
+        android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@+id/imageRadarAsteroids" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewDate"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewDescriptionDateAsteroids"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBackDate"
+        app:layout_constraintTop_toBottomOf="@id/textViewDescriptionDateAsteroids" />
+
+    <Button
+        android:id="@+id/buttonBackDate"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button_border"
+        android:text="@string/button_back"
+        android:textColor="@color/default_text_color"
+        android:textColorLink="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#FFFFFF"
+        app:strokeColor="#FFFFFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

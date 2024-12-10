@@ -1,7 +1,20 @@
 <resources>
     <string name="app_name">AboutAsteroidsTMS</string>
     <string name="picture_of_day">Picture of day</string>
+    <string name="picture_radar">Picture asteroid radar</string>
+    <string name="picture_group">Picture asteroid group</string>
+    <string name="picture_hazardous">Picture asteroid hazardous</string>
     <string name="text_connection_error">Connection error</string>
     <string name="button_try_again">Try again</string>
-    <string name="text_description_date_asteroids">Выберите дату\n (будут показаны самые близкие к Земле астероиды)</string>
+    <string name="text_description_date_asteroids">Select date\n (the closest asteroids to Earth will be shown)</string>
+    <string name="text_view_aboutapp_title">About the application</string>
+    <string name="text_view_aboutapp_description">This app is a quick reference guide to asteroids.
+Here you can get information about small bodies in the solar system, see the Picture of the Day from NASA, and also get data about asteroids via Radar (provided free as an API by NASA).</string>
+    <string name="text_view_aboutapp_use_instruments">*When writing this application, the following were used: MVVM architecture, Glide, API (api.nasa.gov), Retrofit, RecyclerView, View Binding, GSON, Lottie</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_back">Back</string>
+    <string name="button_home">Home</string>
+    <string name="button_asteroids_by_date">Jump to asteroids by date</string>
+    <string name="button_what_asteroid">What are asteroids</string>
+    <string name="button_discovery">How to discover an asteroid</string>
 </resources>

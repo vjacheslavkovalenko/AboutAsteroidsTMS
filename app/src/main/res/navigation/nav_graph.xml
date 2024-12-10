@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.AboutAppFragment"
+        android:label="AboutAppFragment" />
+    <fragment
+        android:id="@+id/detailsAsteroidFragment"
+        android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.detailsasteroid.DetailsAsteroidFragment"
+        android:label="DetailsAsteroidFragment" >
+        <action
+            android:id="@+id/action_detailsAsteroidFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/asteroidsByDateFragment"
+        android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.asteroidsbydate.AsteroidsByDateFragment"
+        android:label="AsteroidsByDateFragment" >
+        <action
+            android:id="@+id/action_asteroidsByDateFragment_to_groupOfAsteroidsFragment"
+            app:destination="@id/groupOfAsteroidsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupOfAsteroidsFragment"
+        android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.groupasteroid.GroupOfAsteroidsFragment"
+        android:label="GroupOfAsteroidsFragment" >
+        <action
+            android:id="@+id/action_groupOfAsteroidsFragment_to_detailsAsteroidFragment"
+            app:destination="@id/detailsAsteroidFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_asteroidsByDateFragment"
+            app:destination="@id/asteroidsByDateFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_discoveryAsteroidsFragment"
+            app:destination="@id/discoveryAsteroidsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_discoveryAsteroidsFragment2"
+            app:destination="@id/discoveryAsteroidsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_whatAsteroidFragment"
+            app:destination="@id/whatAsteroidFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/discoveryAsteroidsFragment"
+        android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.DiscoveryAsteroidsFragment"
+        android:label="DiscoveryAsteroidsFragment" />
+    <fragment
+        android:id="@+id/pictureOfDayFragment"
+        android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.pictureofday.PictureOfDayFragment"
+        android:label="PictureOfDayFragment" />
+    <fragment
+        android:id="@+id/whatAsteroidFragment"
+        android:name="by.vjacheslavkovalenko.aboutasteroidstms.ui.WhatAsteroidFragment"
+        android:label="WhatAsteroidFragment" />
+</navigation>

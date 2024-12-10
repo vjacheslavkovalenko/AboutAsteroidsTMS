@@ -2,10 +2,7 @@ package by.vjacheslavkovalenko.aboutasteroidstms.network.entity
 
 import com.google.gson.annotations.SerializedName
 
-//import androidx.room.PrimaryKey
-
 data class AsteroidResponse(
-    // @PrimaryKey
     @SerializedName("id")
     val id: Long,
     @SerializedName("name")
@@ -20,4 +17,4 @@ data class AsteroidResponse(
     val distanceFromEarth: Double,
     @SerializedName("is_potentially_hazardous_asteroid")
     val isPotentiallyHazardous: Boolean
-)// : Parcelable
+)

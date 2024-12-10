@@ -33,7 +33,6 @@ class PictureOfDayViewModel @Inject constructor(
         CoroutineExceptionHandler { coroutineContext, throwable ->
             showError?.invoke(throwable)
             Log.e(LOG_TAG, throwable.localizedMessage)
-//            Log.e("ThisPictureOfDayViewModel", throwable.localizedMessage)
         }
 
     fun loadPictureOfDay() {

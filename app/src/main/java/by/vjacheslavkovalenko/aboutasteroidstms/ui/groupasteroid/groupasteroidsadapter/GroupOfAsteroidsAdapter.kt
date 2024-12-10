@@ -43,6 +43,5 @@ class GroupOfAsteroidsAdapter(
             )
             onAsteroidClick(asteroid)
         }
-
     }
 }
