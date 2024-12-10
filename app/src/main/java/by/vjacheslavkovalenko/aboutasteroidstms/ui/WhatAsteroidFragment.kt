@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentWhatAsteroidBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +23,8 @@ class WhatAsteroidFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentWhatAsteroidBinding.inflate(inflater)
+//        binding = FragmentWhatAsteroidBinding.inflate(inflater)
+        binding = FragmentWhatAsteroidBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -30,9 +32,12 @@ class WhatAsteroidFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Установите WebViewClient для обработки загрузки страниц
+        binding?.webViewWhatAsteroid?.webViewClient = WebViewClient()
+
         val url = "file:///android_asset/html/whatisanasteroid.html"
 
-        //binding?.webViewWhatAsteroid?.loadUrl(url)
+//        binding?.webViewWhatAsteroid?.loadUrl(url)
         binding?.webViewWhatAsteroid?.apply {
             settings.javaScriptEnabled = true
             loadUrl(url)
