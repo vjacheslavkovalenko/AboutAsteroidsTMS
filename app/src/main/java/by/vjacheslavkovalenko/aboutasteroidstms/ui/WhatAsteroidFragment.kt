@@ -11,7 +11,70 @@ import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentWhatAsteroidBinding
 import dagger.hilt.android.AndroidEntryPoint
-
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
+//
+//class WhatAsteroidFragment : Fragment() {
+//
+//    private var binding: FragmentWhatAsteroidBinding? = null
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        binding = FragmentWhatAsteroidBinding.inflate(inflater, container, false)
+//        return binding?.root
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        // Установите WebViewClient для обработки загрузки страниц
+//        binding?.webViewWhatAsteroid?.webViewClient = WebViewClient()
+//
+//        // Запускаем корутину для получения данных с использованием Flow
+//        lifecycleScope.launch {
+//            getHtmlContentFlow().collect { htmlContent ->
+//                // Загружаем HTML-контент в WebView
+//                binding?.webViewWhatAsteroid?.loadData(htmlContent, "text/html; charset=utf-8", "UTF-8")
+//            }
+//        }
+//    }
+//
+//    private fun getHtmlContentFlow(): Flow<String> {
+//        return flow {
+//            // Здесь вы можете загружать данные из сети или локального источника.
+//            // Например, просто возвращаем статический HTML-контент.
+//            val htmlContent = """
+//                <!DOCTYPE html>
+//                <html lang="ru">
+//                <head>
+//                    <meta charset="UTF-8">
+//                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//                    <title>Что такое астероиды</title>
+//                    <style>
+//                        body { background-color: black; color: white; }
+//                    </style>
+//                </head>
+//                <body>
+//                    <h2>Что такое астероиды</h2>
+//                    <p>Астероиды — это твердые каменистые тела...</p>
+//                </body>
+//                </html>
+//            """.trimIndent()
+//            emit(htmlContent) // Отправляем HTML-контент через Flow
+//        }
+//    }
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        binding = null // Освобождаем ресурсы
+//    }
+//}
 @AndroidEntryPoint
 class WhatAsteroidFragment : Fragment() {
 
@@ -32,19 +95,53 @@ class WhatAsteroidFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Установите WebViewClient для обработки загрузки страниц
+        // Устанавливаю WebViewClient для обработки загрузки страниц
         binding?.webViewWhatAsteroid?.webViewClient = WebViewClient()
 
-        val url = "file:///android_asset/html/whatisanasteroid.html"
+       // val url = "file:///android_asset/html/whatisanasteroid.html"
 
-//        binding?.webViewWhatAsteroid?.loadUrl(url)
-        binding?.webViewWhatAsteroid?.apply {
-            settings.javaScriptEnabled = true
-            loadUrl(url)
+        // Запускаем корутину для получения данных с использованием Flow
+        lifecycleScope.launch {
+            getHtmlContentFlow().collect { htmlContent ->
+                // Загружаем HTML-контент в WebView
+                binding?.webViewWhatAsteroid?.loadData(htmlContent, "text/html; charset=utf-8", "UTF-8")
+            }
         }
+
+
+////        binding?.webViewWhatAsteroid?.loadUrl(url)
+//        binding?.webViewWhatAsteroid?.apply {
+//            settings.javaScriptEnabled = true
+//            loadUrl(url)
+//        }
 
         binding?.buttonBackWhatAsteroid?.setOnClickListener {
             findNavController().popBackStack()
+        }
+    }
+
+        private fun getHtmlContentFlow(): Flow<String> {
+        return flow {
+            // Здесь вы можете загружать данные из сети или локального источника.
+            // Например, просто возвращаем статический HTML-контент.
+            val htmlContent = """
+                <!DOCTYPE html>
+                <html lang="ru">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Что такое астероиды</title>
+                    <style>
+                        body { background-color: black; color: white; }
+                    </style>
+                </head>
+                <body>
+                    <h2>Что такое астероиды</h2>
+                    <p>Астероиды — это твердые каменистые тела...</p>
+                </body>
+                </html>
+            """.trimIndent()
+            emit(htmlContent) // Отправляем HTML-контент через Flow
         }
     }
 }
