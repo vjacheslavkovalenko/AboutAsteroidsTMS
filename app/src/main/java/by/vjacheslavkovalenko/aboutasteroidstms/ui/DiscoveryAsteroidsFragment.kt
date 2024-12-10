@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import by.vjacheslavkovalenko.aboutasteroidstms.databinding.FragmentDiscoveryAsteroidsBinding
 import android.webkit.WebView
+import androidx.navigation.fragment.findNavController
 import by.vjacheslavkovalenko.aboutasteroidstms.repository.FirebaseRepository
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DiscoveryAsteroidsFragment : Fragment() {
 
     private var binding: FragmentDiscoveryAsteroidsBinding? = null
@@ -41,10 +44,8 @@ class DiscoveryAsteroidsFragment : Fragment() {
             }
         }
 
-
-//        //общий случай
-//        val url = "ddd"
-//        binding?.webViewDiscovery?.loadUrl(url)
-
+        binding?.buttonBackDiscoveryAsteroids?.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 }

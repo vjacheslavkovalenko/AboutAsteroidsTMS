@@ -5,14 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <WebView
-        android:id="@+id/webViewDiscovery"
+        android:id="@+id/webViewWhatAsteroid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/app_background"
-        app:layout_constraintBottom_toTopOf="@id/buttonBackDiscoveryAsteroids"/>
+        app:layout_constraintBottom_toTopOf="@id/buttonBackWhatAsteroid"/>
 
     <Button
-        android:id="@+id/buttonBackDiscoveryAsteroids"
+        android:id="@+id/buttonBackWhatAsteroid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_back"

@@ -32,12 +32,23 @@ class MainFragment : Fragment() {
         if (savedInstanceState == null) {
             val pictureOfDayFragment = PictureOfDayFragment()
             childFragmentManager.beginTransaction()
-                .replace(R.id.picture_of_day_container, pictureOfDayFragment) // Замените на ваш ID контейнера
+                .replace(
+                    R.id.picture_of_day_container,
+                    pictureOfDayFragment
+                )
                 .commit()
         }
 
         binding?.buttonAsteroidsByDate?.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_asteroidsByDateFragment)
+        }
+
+        binding?.buttonWhatAsteroid?.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_whatAsteroidFragment)
+        }
+
+        binding?.buttonDiscovery?.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_discoveryAsteroidsFragment)
         }
 
         binding?.buttonAboutApp?.setOnClickListener {

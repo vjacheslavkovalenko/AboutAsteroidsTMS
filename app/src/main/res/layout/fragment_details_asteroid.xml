@@ -101,34 +101,23 @@
             android:id="@+id/buttonBackDetails"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
             android:layout_marginBottom="50dp"
+            android:layout_weight="1"
             android:background="@drawable/button_border"
             android:text="@string/button_back"
             android:textColor="@color/default_text_color"
-            android:textColorLink="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonsLinearLayout"
-            app:layout_constraintEnd_toEndOf="@+id/buttonHomeDetails"
-            app:layout_constraintStart_toStartOf="@+id/buttonsLinearLayout"
-            app:rippleColor="#FFFFFF"
-            app:strokeColor="#FFFFFF" />
+            android:textColorLink="#FFFFFF" />
 
         <Button
             android:id="@+id/buttonHomeDetails"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
             android:layout_marginBottom="50dp"
+            android:layout_weight="1"
             android:background="@drawable/button_border"
             android:text="@string/button_home"
             android:textColor="@color/default_text_color"
-            android:textColorLink="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonsLinearLayout"
-            app:layout_constraintEnd_toEndOf="@+id/buttonsLinearLayout"
-            app:layout_constraintStart_toStartOf="@+id/buttonBackDetails"
-            app:rippleColor="#FFFFFF"
-            app:strokeColor="#FFFFFF"
-            />
+            android:textColorLink="#FFFFFF" />
 
     </LinearLayout>
 
