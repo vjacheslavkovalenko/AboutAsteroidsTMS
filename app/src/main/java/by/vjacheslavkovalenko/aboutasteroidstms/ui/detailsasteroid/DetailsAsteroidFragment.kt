@@ -45,24 +45,15 @@ class DetailsAsteroidFragment : Fragment() {
 
 //        binding?.buttonBackDetails?.setOnClickListener {
 ////            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_groupOfAsteroidsFragment)
-//            findNavController().popBackStack()
+////            findNavController().popBackStack()
+//            findNavController().navigateUp()
 //        }
-//
+
 //        binding?.buttonHomeDetails?.setOnClickListener {
 //            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_mainFragment)
 //        }
 
 
-//        // Обработчик для кнопки "Назад"
-//        binding?.buttonBackDetails?.setOnClickListener {
-//            findNavController().navigateUp() // Переход на предыдущий экран
-//        }
-//
-//        // Обработчик для кнопки "Главная"
-//        binding?.buttonHomeDetails?.setOnClickListener {
-//            findNavController().navigate(R.id.action_detailsAsteroidFragment_to_mainFragment) // Замените на ID вашего фрагмента главной страницы
-//        }
-//
 
         // Обработчик для кнопки "Назад"
         binding?.buttonBackDetails?.setOnClickListener {
@@ -73,6 +64,7 @@ class DetailsAsteroidFragment : Fragment() {
 //        binding?.buttonHomeDetails?.setOnClickListener {
 //            (activity as? MainActivity)?.showHomeFragment() // Вызов метода для перехода на главную страницу
 //        }
+
 
     }
 

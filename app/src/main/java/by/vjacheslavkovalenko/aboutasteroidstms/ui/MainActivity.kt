@@ -34,5 +34,8 @@ class MainActivity : AppCompatActivity() {
 //            .replace(R.id.container, AsteroidsByDateFragment())//удалить
 //            .addToBackStack(null) // Добавляем в стек для возврата назад//удалить
 //            .commit()//удалить
+
+
+
     }
 }

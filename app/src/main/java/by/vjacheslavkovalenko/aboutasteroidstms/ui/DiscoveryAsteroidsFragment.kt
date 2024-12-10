@@ -10,6 +10,9 @@ import android.webkit.WebView
 import androidx.navigation.fragment.findNavController
 import by.vjacheslavkovalenko.aboutasteroidstms.repository.FirebaseRepository
 import dagger.hilt.android.AndroidEntryPoint
+import android.webkit.WebViewClient
+
+
 
 @AndroidEntryPoint
 class DiscoveryAsteroidsFragment : Fragment() {
@@ -30,6 +33,9 @@ class DiscoveryAsteroidsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //        // Установите WebViewClient для обработки загрузки страниц
+        binding?.webViewDiscovery?.webViewClient = WebViewClient()
+
         //Получаем HTML-код из Firebase и загружаем его в WebView
         firebaseRepository.getHtmlContent { htmlContent ->
             htmlContent?.let {
@@ -49,3 +55,4 @@ class DiscoveryAsteroidsFragment : Fragment() {
         }
     }
 }
+
